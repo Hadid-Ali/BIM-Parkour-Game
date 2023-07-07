@@ -5,7 +5,6 @@ public class SwapDetection : MonoBehaviour
 {
     [SerializeField] private SwipeListener swipeListener ;
     [SerializeField] private PlayerController playerTransform ;
-    [SerializeField] private float playerSpeed ;
 
     private Vector2 playerDirection = Vector2.zero ;
 
@@ -23,8 +22,8 @@ public class SwapDetection : MonoBehaviour
                 break ;
             case "Up":
                 playerDirection = Vector2.up ;
-                // playerTransform.BatNhay();        //High Jump        
-                playerTransform.Nhayxa();            //Short Jump
+                playerTransform.BatNhay();        //High Jump        
+                //playerTransform.Nhayxa();            //Short Jump
 
                 break ;
             case "Down":

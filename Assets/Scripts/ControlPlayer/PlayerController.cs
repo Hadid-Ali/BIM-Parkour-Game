@@ -746,7 +746,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         batXa = true;
         rig.velocity = Vector3.zero;
         tempPower += 1f;
-        rig.AddForce(0, 8, 0, ForceMode.Impulse);
+        rig.AddForce(0, 4, 0, ForceMode.Impulse);
         ManagerEffect.Instance.OffMoveSmoke();
         ManagerEffect.Instance.ShowFxBatXa();
         ManagerEffect.Instance.ShowFxSongAm(transform.position);
