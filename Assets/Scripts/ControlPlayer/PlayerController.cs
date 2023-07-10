@@ -52,8 +52,17 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     private float tempReduce;
     private void Start()
     {
+        BatNhay();
+        //Slide();
+        setIdle();
+        batXa = false;
         capsuleCollider = GetComponent<CapsuleCollider>();
         posCheckPoint = transform.position;
+    }
+
+    void setIdle()
+    {
+        anim.Play("Idle",-1,0);
     }
     public void SetValuePlayer(bool checkFirebase)
     {
@@ -75,6 +84,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         coroutinePower = StartCoroutine(UpValuePower());
         Run();
+        
+        _isGround = IsGrounded();
         _isRun = true;
     }
 
@@ -267,7 +278,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                             anim.Play("LandRoll", -1, 0);
                             batXa = false;
                             tempPower -= 1f;
-                            TestCamera.Instance.CameraShake();
+//                            TestCamera.Instance.CameraShake();
                             checkFirst = false;
                             isAction = false;
                             SoundManager.Instance.PlaySoundLonVongTiepDat();
@@ -310,10 +321,10 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     }
                     else
                     {
-                        if (!isAction)
+                        /*if (!isAction)
                             RaycastCheckLeft();
                         if (!isAction)
-                            RaycastCheckRight();
+                            RaycastCheckRight();*/
                         if (!isAction)
                             CheckIsJump();
                     }
@@ -621,7 +632,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         transform.DOMoveZ(transform.position.z - .3f, .5f);
         checkFirst = false;
         lockMove = true;
-        TestCamera.Instance.DontCameraFollow();
+//        TestCamera.Instance.DontCameraFollow();
         _isLive = false;
         //anim.SetInteger(AnimParameter.wallclimb, 0);
         //this.PostEvent(EventID.PauseAI);
@@ -630,7 +641,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     void DelayReSpawn()
     {
         lockMove = false;
-        TestCamera.Instance.CameraFollow();
+//        TestCamera.Instance.CameraFollow();
         _isLive = true;
         transform.position = posCheckPoint;
         ManagerEffect.Instance.ShowFxUpgrade();
@@ -724,7 +735,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         isAction = true;
         anim.SetTrigger(AnimParameter.nhayxa);
         rig.velocity = Vector3.zero;
-        rig.AddForce(new Vector3(0f, /*heigh_Jump*/3f, 0), ForceMode.Impulse);
+        rig.AddForce(new Vector3(0f, /*heigh_Jump*/4, 0), ForceMode.Impulse);
         ManagerEffect.Instance.OffMoveSmoke();
         ManagerEffect.Instance.ShowFxSongAm(transform.position);
         if (!reduceVelocity)
@@ -734,11 +745,12 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         }
     }
     bool batXa;
-    public void BatNhay()
+    public void BatNhay() // high Jump Function
     {
-        SoundManager.Instance.PlaySoundBatXa();
+        // SoundManager.Instance.PlaySoundBatXa();
         EatItemPower(0.5f);
         isAction = true;
+        // checkFirst = true;
         if (Random.Range(0, 2) == 0)
             anim.Play("JumpRoll", -1, 0);
         else
@@ -747,9 +759,9 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         rig.velocity = Vector3.zero;
         tempPower += 1f;
         rig.AddForce(0, 4, 0, ForceMode.Impulse);
-        ManagerEffect.Instance.OffMoveSmoke();
-        ManagerEffect.Instance.ShowFxBatXa();
-        ManagerEffect.Instance.ShowFxSongAm(transform.position);
+        // ManagerEffect.Instance.OffMoveSmoke();
+        // ManagerEffect.Instance.ShowFxBatXa();
+        // ManagerEffect.Instance.ShowFxSongAm(transform.position);
     }
     Vector3 posCheckPoint;
     public void CheckPoint(Vector3 target)

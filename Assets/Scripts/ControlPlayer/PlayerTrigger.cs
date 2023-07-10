@@ -31,7 +31,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         }
         if (collision.gameObject.CompareTag("Die2"))
         {
-            TestCamera.Instance.CameraShake();
+            //TestCamera.Instance.CameraShake();
             SoundManager.Instance.PlaySoundDie();
             playerController.Die();
             playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);

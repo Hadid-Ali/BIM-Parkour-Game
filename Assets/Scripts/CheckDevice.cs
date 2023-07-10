@@ -34,7 +34,7 @@ public class CheckDevice : MonoBehaviour
         }
         else
         {
-            dynamicFog.enabled = true;
+           //dynamicFog.enabled = true;
         }
 #endif
     }

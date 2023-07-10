@@ -48,7 +48,7 @@ public class TestCamera : MonoBehaviourSingleton<TestCamera>
     private CinemachineBasicMultiChannelPerlin noiseCam;
     public void CameraShake()
     {
-        StartCoroutine(DelayShake());
+        // StartCoroutine(DelayShake());
     }
     IEnumerator DelayShake()
     {
