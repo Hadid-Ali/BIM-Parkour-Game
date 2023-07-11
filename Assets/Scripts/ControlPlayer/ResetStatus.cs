@@ -11,7 +11,7 @@ public class ResetStatus : MonoBehaviour
     }
     void ChangeNewPosition()
     {
-        transform.parent.position = new Vector3(transform.parent.position.x, transform.GetChild(1).GetChild(0).position.y, transform.GetChild(1).GetChild(0).position.z);
+        //transform.parent.position = new Vector3(transform.parent.position.x, transform.GetChild(1).GetChild(0).position.y, transform.GetChild(1).GetChild(0).position.z);
         PlayerController.Instance.lockMove = false;
         PlayerController.Instance._isRun = true;
         //TestCamera.Instance.lookAt = TestCamera.Instance.player;

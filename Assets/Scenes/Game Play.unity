@@ -333,12 +333,6 @@ Transform:
   m_Father: {fileID: 1970065064}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &49169342 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8330215952574198054, guid: f506d11e9a559f74ba53d0d9af5aca18,
-    type: 3}
-  m_PrefabInstance: {fileID: 54685580}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &49169343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8330215952574370270, guid: f506d11e9a559f74ba53d0d9af5aca18,
@@ -2521,8 +2515,8 @@ MonoBehaviour:
   fxSlide: {fileID: 8884755115932136126, guid: edd91cb891151cc41a2f014498aa2cb4, type: 3}
   fxJump: {fileID: 195376, guid: 346f3bf3686d682498113714ee132099, type: 3}
   fxJump2: {fileID: 2827347397177394604, guid: 6976d380347453a4297ba6cf929c7615, type: 3}
-  moveSmoke: {fileID: 49169342}
-  moveSmokeParent: {fileID: 1023676788}
+  moveSmoke: {fileID: 1023676788}
+  moveSmokeParent: {fileID: 1970065063}
   fxPowerUp: {fileID: 1519083019}
   Player: {fileID: 1380695833}
   top1Effect: {fileID: 787887387}
@@ -10192,6 +10186,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5880627565240077725, guid: 88f0f74260be77d42bf74fbef2c77f51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5880627565240077726, guid: 88f0f74260be77d42bf74fbef2c77f51,
         type: 3}
       propertyPath: m_RootOrder
@@ -10661,6 +10660,11 @@ PrefabInstance:
     - target: {fileID: 3165917387400281610, guid: a0e99842575a02242927406bf8328c88,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165917387400281844, guid: a0e99842575a02242927406bf8328c88,
+        type: 3}
+      propertyPath: EmissionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3165917387400281845, guid: a0e99842575a02242927406bf8328c88,
@@ -13071,6 +13075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880627565240077725, guid: 88f0f74260be77d42bf74fbef2c77f51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5880627565240077726, guid: 88f0f74260be77d42bf74fbef2c77f51,
         type: 3}

@@ -398,7 +398,6 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 }
                 if (IsFrontUp() /*&& !wallRunRight*/)
                 {
-                    Debug.Log("Ya dykh abdullah chal raha");
                     rig.velocity = Vector3.zero;
                     //Debug.Log("leo tuong");
                     _isRun = false;
