@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public bool _isLive;
     public bool _isRun;
     public bool _isGround;
+    public bool _isSliding;
     public bool _isPowerUp;
     public float speed;
     private float speedMoveX;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     Coroutine coroutinePower;
     [SerializeField] Material mat_player;
     public bool leoTuong;
-    private bool endLeoTuong;
+    public bool endLeoTuong;
     public bool wallRunLeft;
     public bool wallRunRight;
     [SerializeField] GameObject txtText;
@@ -50,6 +51,9 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     private bool checkLonvong;
     private bool reduceVelocity;
     private float tempReduce;
+
+
+    public int HitCount = 0;
     private void Start()
     {
         BatNhay();
@@ -281,7 +285,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 //                            TestCamera.Instance.CameraShake();
                             checkFirst = false;
                             isAction = false;
-                            SoundManager.Instance.PlaySoundLonVongTiepDat();
+                            // SoundManager.Instance.PlaySoundLonVongTiepDat();
                         }
                         else
                         {
@@ -333,7 +337,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 {
                     checkFirst = true;
                     //chay tren tuong
-                    if (IsLeft())
+                    /*if (IsLeft())
                     {
                         if (!wallRunLeft)
                         {
@@ -394,87 +398,29 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                             rig.drag = 0;
                             rig.AddForce(-2f, 6, 0, ForceMode.Impulse);
                         }
-                    }
+                    }*/
                 }
                 if (IsFrontUp() /*&& !wallRunRight*/)
                 {
-                    rig.velocity = Vector3.zero;
-                    //Debug.Log("leo tuong");
-                    _isRun = false;
-                    leoTuong = true;
-                    endLeoTuong = false;
-                    rig.isKinematic = true;
-                    anim.Play("WallClimbing", -1, 0);
-                    isAction = true;
-                    wallRunLeft = false;
-                    wallRunRight = false;
-                    checkLonvong = false;
-                    if (batXa)
-                    {
-                        batXa = false;
-                        tempPower -= 1f;
-                    }
-                    if (reduceVelocity)
-                        rig.drag = 0;
+                    StartClimbing();
                 }
             }
             else
             {
                 if (!endLeoTuong)
                 {
+                    
                     if (!_isPowerUp)
                         transform.Translate(Vector3.up * speedLeoTuong * Time.deltaTime);
-                    else
-                        transform.Translate(Vector3.up * speedLeoTuong * 2 * Time.deltaTime);
+
                     if (!checkAnimPlay("WallClimbing"))
                     {
                         anim.Play("WallClimbing", -1, 0);
                     }
                 }
-                if (!IsFrontUpLeft() && IsFrontUpRight())
-                {
-                    //Debug.Log("leo len nhay trai");
-                    leoTuong = false;
-                    endLeoTuong = true;
-                    _isRun = true;
-                    rig.isKinematic = false;
-                    isAction = false;
-                    anim.SetInteger(AnimParameter.jump, 1);
-                    rig.AddForce(-1f, 5, 0, ForceMode.Impulse);
-                }
-                else
-                if (!IsFrontUpRight() && IsFrontUpLeft())
-                {
-                    //Debug.Log("leo len nhay phai");
-                    leoTuong = false;
-                    endLeoTuong = true;
-                    _isRun = true;
-                    rig.isKinematic = false;
-                    isAction = false;
-                    anim.SetInteger(AnimParameter.jump, 1);
-                    rig.AddForce(1f, 5, 0, ForceMode.Impulse);
-                }
-                else if (!IsFrontUpLeft() && !IsFrontUpRight())
-                {
-                    if (!checkAnimPlay("WallClimbingEnd"))
-                    {
-                        lockMove = true;
-                        anim.Play("WallClimbingEnd", -1, 0);
-                        //leoTuong = false;
-                        endLeoTuong = true;
-                        _isRun = false;
-                        checkFirst = false;
-                        transform.DOMoveY(transform.position.y + .12f, .2f);
-                        transform.DOMoveZ(transform.position.z + .02f, .2f);
-                        //{
-                        //    isAction = false;
-                        //    _isRun = true;
-                        //    rig.isKinematic = false;
-                        //    leoTuong = false;
-                        //    checkFirst = false;
-                        //});
-                    }
-                }
+
+                ClimbEnd();
+
             }
         }
         if (rig.velocity.y < -4f)
@@ -483,6 +429,48 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public bool checkFirst;
     public bool isAction;
 
+    public void ClimbEnd()
+    {
+        if (!IsFrontUp())
+        {
+            if (!checkAnimPlay("WallClimbingEnd"))
+            {
+                lockMove = true;
+                anim.Play("WallClimbingEnd", -1, 0);
+                //leoTuong = false;
+                endLeoTuong = true;
+                _isRun = false;
+                checkFirst = false;
+                transform.DOMoveY(transform.position.y + .12f, .2f);
+                transform.DOMoveZ(transform.position.z + .02f, .2f);
+
+            }
+        }
+        
+    }
+
+    void StartClimbing()
+    {
+        rig.velocity = Vector3.zero;
+        //Debug.Log("leo tuong");
+        _isRun = false;
+        leoTuong = true;
+        endLeoTuong = false;
+        rig.isKinematic = true;
+        anim.Play("WallClimbing", -1, 0);
+        isAction = true;
+        wallRunLeft = false;
+        wallRunRight = false;
+        checkLonvong = false;
+        if (batXa)
+        {
+            batXa = false;
+            tempPower -= 1f;
+        }
+        if (reduceVelocity)
+            rig.drag = 0;
+    }
+    
     void CheckIsJump()
     {
         RaycastHit hit;
@@ -613,6 +601,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         //if (!isAction)
         //{
+        _isSliding = true;
         SoundManager.Instance.PlaySoundSlide();
         EatItemPower(0.5f);
         isAction = true;

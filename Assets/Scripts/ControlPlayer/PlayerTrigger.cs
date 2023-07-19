@@ -36,6 +36,37 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             playerController.Die();
             playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);
         }
+
+        if (collision.gameObject.CompareTag("RoleOverHurdle"))
+        {
+            if (playerController.HitCount < 2)
+            {
+                playerController.HitCount++;
+                playerController.anim.Play("HurdleJump", -1, 0);
+                playerController.rig.AddForce(new Vector3(0f, 2f, 0), ForceMode.Impulse);
+                //playerController.Run();
+            }
+            else
+            {
+                playerController.Die();
+                playerController.HitCount = 0;
+            }
+        }
+        if (collision.gameObject.CompareTag("LongRoll"))
+        {
+            if (playerController.HitCount < 2)
+            {
+                playerController.HitCount++;
+                playerController.anim.Play("LongRoll", -1, 0);
+                playerController.rig.AddForce(new Vector3(0f, 2f, 0), ForceMode.Impulse);
+                //playerController.Run();
+            }
+            else
+            {
+                playerController.Die();
+                playerController.HitCount = 0;
+            }
+        }
     }
 
     #endregion
@@ -44,6 +75,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         RaycastStar();
     }
     #region OnTrigger
+    
     private void OnTriggerEnter(Collider other)
     {
         if (playerController._isLive)
@@ -69,7 +101,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "climb":
                     playerController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                     break;
-                case "nhayxa":
+                /*case "nhayxa":
                     if (!playerController._isPowerUp)
                         playerController.Nhayxa();
                     else
@@ -80,8 +112,8 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         Vibration.Vibrate(15);
                     }
 
-                    break;
-                case "NhayVuotRao":
+                    break;*/
+                /*case "NhayVuotRao":
                     if (!playerController._isPowerUp)
                         playerController.NhayVuotRao();
                     else
@@ -91,7 +123,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         ManagerEffect.Instance.ShowFxStar(other.transform.position);
                         Vibration.Vibrate(15);
                     }
-                    break;
+                    break;*/
                 case "Win":
                     gameObject.GetComponent<SetTopChart>().OffOder();
                     ManagerEffect.Instance.SetOnTop(gameObject, true);
@@ -102,6 +134,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     posPath[4] = other.transform.GetChild(5).position;
                     playerController.Win(other.transform.GetChild(0).position);
                     break;
+                
                 case "checkPoint":
                     playerController.CheckPoint(other.transform.position);
                     break;
@@ -116,11 +149,17 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "BatNhay":
                     playerController.BatNhay();
                     break;
-                case "jump":
+                /*case "jump":
                     playerController.Jump();
-                    break;
+                    break;*/
                 case "rotatecam":
                     TestCamera.Instance.ChangeRotateCamera();
+                    break;
+                case "SlideHurdle":
+                    if (!playerController._isSliding)
+                    {
+                        playerController.Die();
+                    }
                     break;
             }
     }

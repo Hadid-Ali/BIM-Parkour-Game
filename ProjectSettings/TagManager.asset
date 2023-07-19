@@ -23,6 +23,9 @@ TagManager:
   - Die2
   - rotatecam
   - camdefault
+  - RoleOverHurdle
+  - SlideHurdle
+  - LongRoll
   layers:
   - Default
   - TransparentFX

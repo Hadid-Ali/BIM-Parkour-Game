@@ -19,6 +19,7 @@ public class ResetStatus : MonoBehaviour
     }
     void EndAction()
     {
+        PlayerController.Instance._isSliding = false;
         PlayerController.Instance.isAction = false;
         ManagerEffect.Instance.OnMoveSmoke();
     }
@@ -43,5 +44,9 @@ public class ResetStatus : MonoBehaviour
         PlayerController.Instance.checkFirst = true;
         PlayerController.Instance.lockMove = false;
         //Debug.Log("hanh dong");
+    }
+    void ClimbDie()
+    {
+        PlayerController.Instance.Die();
     }
 }
