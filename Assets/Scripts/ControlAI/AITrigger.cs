@@ -37,7 +37,7 @@ public class AITrigger : MonoBehaviour
             case "climb":
                 aIController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                 break;
-            case "nhayxa":
+            case "Jump":
                 aIController.Nhayxa();
                 break;
             case "NhayVuotRao":

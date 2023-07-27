@@ -26,6 +26,7 @@ TagManager:
   - RoleOverHurdle
   - SlideHurdle
   - LongRoll
+  - Slide
   layers:
   - Default
   - TransparentFX
