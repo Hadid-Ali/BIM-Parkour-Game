@@ -47,8 +47,11 @@ public class UIController : MonoBehaviourSingleton<UIController>
     [SerializeField] GameObject effPower1;
     [SerializeField] GameObject effPower2;
     [SerializeField] GameObject iconShop;
+    
+    [SerializeField] Button m_restartBTN;
     private void Start()
     {
+        m_restartBTN.onClick.AddListener(restartGame);
         //ChangeMap(PlayerprefSave.IdMap());
         ChangeTextCoin(PlayerprefSave.Coin);
         txtLevel.text = "LEVEL " + (PlayerprefSave.IdMap() + 1).ToString() + "/100";
@@ -64,6 +67,11 @@ public class UIController : MonoBehaviourSingleton<UIController>
                 }
             }
         }
+    }
+
+    void restartGame()
+    {
+        SceneManager.LoadScene(0);
     }
     public void DelayStart()
     {
@@ -374,16 +382,16 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void ButtonPowerUp()
     {
-        PlayerController.Instance.UsePowerUp();
-        btnPowerUp.transform.localScale = Vector3.zero;
+        /*PlayerController.Instance.UsePowerUp();
+        btnPowerUp.transform.localScale = Vector3.zero;*/
         // SendEventFirebase.SendEvent_booster_use(PlayerprefSave.IdMap() + 1);
 
     }
     public void btnReplayClick()
     {
-        panelLoading.SetActive(true);
-        StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex, 1f));
-        SoundManager.Instance.PlaySoundClick();
+        // panelLoading.SetActive(true);
+        // StartCoroutine(LoadYourAsyncScene(SceneManager.GetActiveScene().buildIndex, 1f));
+        // SoundManager.Instance.PlaySoundClick();
     }
     public void btnShop()
     {

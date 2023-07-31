@@ -96,7 +96,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 //        playerController.Die();
                 //    }
                 //    break;
-                case "slide":
+                /*case "slide":
                     if (!playerController._isPowerUp)
                         playerController.Slide();
                     else
@@ -106,7 +106,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         other.gameObject.SetActive(false);
                         ManagerEffect.Instance.ShowFxStar(other.transform.position);
                     }
-                    break;
+                    break;*/
                 case "climb":
                     playerController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                     break;
@@ -158,13 +158,13 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "BatNhay":
                     playerController.BatNhay();
                     break;
-                /*case "jump":
-                    playerController.Jump();
-                    break;*/
+                case "jump":
+                    playerController.Die();
+                    break;
                 case "rotatecam":
                     TestCamera.Instance.ChangeRotateCamera();
                     break;
-                case "SlideHurdle":
+                case "slide":
                     if (!playerController._isSliding)
                     {
                         playerController.Die();

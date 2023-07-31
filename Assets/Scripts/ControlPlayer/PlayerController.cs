@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public int HitCount = 0;
     private void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
         BatNhay();
         //Slide();
         setIdle();
@@ -86,15 +88,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     }
     public void StartGame()
     {
-        coroutinePower = StartCoroutine(UpValuePower());
+        // coroutinePower = StartCoroutine(UpValuePower());
         Run();
-        
+        checkFirst = true;
         _isGround = IsGrounded();
         _isRun = true;
     }
 
     #region Power Up
-    IEnumerator UpValuePower()
+    /*IEnumerator UpValuePower()
     {
         yield return new WaitForSeconds(2f);
         valuePowerUp += .1f;
@@ -112,8 +114,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             }
         }
         UIController.Instance.fillPower.DOFillAmount(valuePowerUp / maxPower, .2f).SetEase(Ease.Linear);
-    }
-    public void EatItemPower(float value)
+    }*/
+    /*public void EatItemPower(float value)
     {
         valuePowerUp += value;
         if (valuePowerUp >= maxPower)
@@ -131,8 +133,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             UIController.Instance.fillPower.DOFillAmount(valuePowerUp / maxPower, .2f).SetEase(Ease.Linear);
         }
 
-    }
-    public void UsePowerUp()
+    }*/
+    /*public void UsePowerUp()
     {
         if (!_isPowerUp)
             if (valuePowerUp > 0)
@@ -164,7 +166,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     tempReduce = 0;
                 }
             }
-    }
+    }*/
     #endregion
     public bool IsGrounded()
     {
@@ -299,7 +301,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                                 if (Time.time - timeTemp > 1.3f)
                                 {
                                     anim.Play("LandRoll", -1, 0);
-                                    SoundManager.Instance.PlaySoundLonVongTiepDat();
+                                    //SoundManager.Instance.PlaySoundLonVongTiepDat();
                                 }
                                 else
                                     Run();
@@ -309,8 +311,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                                 Run();
                             }
                             checkLonvong = false;
-                            ManagerEffect.Instance.EffectTiepDat();
-                            ManagerEffect.Instance.OnMoveSmoke();
+                            /*ManagerEffect.Instance.EffectTiepDat();
+                            ManagerEffect.Instance.OnMoveSmoke();*/
                         }
                         wallRunLeft = false;
                         wallRunRight = false;
@@ -488,7 +490,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //    ManagerEffect.Instance.EffectJump();
         //}
     }
-    void RaycastCheckLeft()
+    /*void RaycastCheckLeft()
     {
         RaycastHit hit;
         Vector3 direction = JumpLeft.position - originJump.position;
@@ -516,8 +518,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //    ManagerEffect.Instance.OffMoveSmoke();
         //}
 
-    }
-    void RaycastCheckRight()
+    }*/
+    /*void RaycastCheckRight()
     {
         RaycastHit hit;
         Vector3 direction = JumpRight.position - originJump.position;
@@ -544,7 +546,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //    ManagerEffect.Instance.EffectJump();
         //    ManagerEffect.Instance.OffMoveSmoke();
         //}
-    }
+    }*/
     bool checkWallRight()
     {
         Vector3 direction = checkRight.position - originJump.position;
@@ -577,7 +579,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             rig.AddForce(0, heigh_Jump, 0, ForceMode.Impulse);
             ManagerEffect.Instance.OffMoveSmoke();
             timeTemp = Time.time;
-            checkLonvong = true;
+            //checkLonvong = true;
         }
     }
     public void Climb(int idType)
@@ -602,13 +604,13 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //if (!isAction)
         //{
         _isSliding = true;
-        SoundManager.Instance.PlaySoundSlide();
-        EatItemPower(0.5f);
+        // SoundManager.Instance.PlaySoundSlide();
+        //EatItemPower(0.5f);
         isAction = true;
         anim.SetTrigger(AnimParameter.slide);
-        ManagerEffect.Instance.OffMoveSmoke();
+        /*ManagerEffect.Instance.OffMoveSmoke();
         ManagerEffect.Instance.ShowFxSongAm(transform.position);
-        ManagerEffect.Instance.EffectJump2();
+        ManagerEffect.Instance.EffectJump2();*/
         //}
     }
     public void Die()
@@ -700,7 +702,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         SoundManager.Instance.PlaySoundNhay();
         isAction = true;
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         anim.SetInteger(AnimParameter.vuotrao, 1);
         rig.velocity = Vector3.zero;
         rig.AddForce(new Vector3(0f, heigh_Jump, 0), ForceMode.Impulse);
@@ -719,7 +721,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         ManagerEffect.Instance.EffectJump2();
         ManagerEffect.Instance.EffectJump();
         SoundManager.Instance.PlaySoundNhay();
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         isAction = true;
         anim.SetTrigger(AnimParameter.nhayxa);
         rig.velocity = Vector3.zero;
@@ -736,7 +738,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public void BatNhay() // high Jump Function
     {
         // SoundManager.Instance.PlaySoundBatXa();
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         isAction = true;
         // checkFirst = true;
         if (Random.Range(0, 2) == 0)
