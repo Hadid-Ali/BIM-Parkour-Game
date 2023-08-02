@@ -13,6 +13,9 @@ public class TestCamera : MonoBehaviourSingleton<TestCamera>
     public bool camFollow;
     public Transform pos1, pos2;
     float posZ;
+    public GameObject wincam;
+    public GameObject bg;
+    
 
     private void Start()
     {

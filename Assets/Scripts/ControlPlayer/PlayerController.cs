@@ -663,22 +663,26 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         _isLive = false;
         isWin = true;
         lockMove = true;
-        Jump();
+        //Jump();
         txtText.SetActive(false);
         this.PostEvent(EventID.OffText);
         this.PostEvent(EventID.PauseAI);
         Invoke("DelaySlow", 2.4f);
         GameManager.instance.GameOver();
-        ManagerEffect.Instance.OffMoveSmoke();
-        transform.DOJump(target, 0.5f, 1, 1f).SetEase(Ease.Linear).OnComplete(() =>
-        {
+        //ManagerEffect.Instance.OffMoveSmoke();
+        /*transform.DOJump(target, 0.5f, 1, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        {*/
 
-            //TestCamera.Instance.camWin();
+            TestCamera.Instance.camWin();
             TestCamera.Instance.DontCameraFollow();
-            //Camera.main.GetComponent<CinemachineBrain>().enabled = false;
-            Camera.main.transform.DORotate(new Vector3(12, -180, 0), 1.5f).SetEase(Ease.Linear);
-            Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
-            if (ManagerEffect.Instance.top == 1)
+            Camera.main.GetComponent<CinemachineBrain>().enabled = false;
+            TestCamera.Instance.bg.SetActive(false);
+            Camera.main.orthographic = false;
+            Camera.main.fieldOfView = 60f;
+            //TestCamera.Instance.wincam.SetActive(true);
+            Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
+            //Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
+            if (GameManager.Instance.playerPos == 1)
             {
                 anim.SetTrigger("win");
             }
@@ -689,7 +693,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 else
                     anim.Play("lose2", -1, 0);
             }
-        });
+        /*});*/
         checkLonvong = false;
         UIController.Instance.btnPowerUp.gameObject.SetActive(false);
     }

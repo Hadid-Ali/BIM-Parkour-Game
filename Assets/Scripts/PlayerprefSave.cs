@@ -6,8 +6,12 @@ public static class PlayerprefSave
 {
     public static int Coin
     {
-        set { PlayerPrefs.SetInt("coin", value); }
-        get { return PlayerPrefs.GetInt("coin"); }
+        set
+        {
+            SaveLoadData.m_data.Coins = value;
+            SaveLoadData.SaveData();
+        }
+        get { return SaveLoadData.m_data.Coins; }
     }
     public static int CurrentCostume
     {

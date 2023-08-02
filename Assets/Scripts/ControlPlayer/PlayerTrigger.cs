@@ -135,7 +135,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     break;*/
                 case "Win":
                     gameObject.GetComponent<SetTopChart>().OffOder();
-                    ManagerEffect.Instance.SetOnTop(gameObject, true);
+                    GameManager.Instance.playerPos++;
                     posPath[0] = other.transform.GetChild(1).position;
                     posPath[1] = other.transform.GetChild(2).position;
                     posPath[2] = other.transform.GetChild(3).position;
@@ -152,8 +152,8 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 //    break;
                 case "coin":
                     //ManagerEffect.Instance.EffectTrigger(other.transform.GetChild(0).position);
-                    //GameManager.instance.EatCoin(10);
-                    //other.gameObject.SetActive(false);
+                    GameManager.instance.EatCoin(100);
+                    other.gameObject.SetActive(false);
                     break;
                 case "BatNhay":
                     playerController.BatNhay();
@@ -188,7 +188,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             hit.collider.transform.DOScale(.03f, 0.2f);
             hit.collider.transform.DOMove(posStarEat.position, .2f).OnComplete(() =>
             {
-                GameManager.instance.EatCoin(1);
+                //GameManager.instance.EatCoin(1);
                 ManagerEffect.Instance.EffectTrigger(hit.collider.gameObject.transform.position);
             });
             hit.collider.enabled = false;

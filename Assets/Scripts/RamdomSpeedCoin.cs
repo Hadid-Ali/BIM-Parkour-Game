@@ -1,19 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RamdomSpeedCoin : MonoBehaviour
 {
-    private void OnBecameVisible()
+    [SerializeField] private float m_Speed;
+    [SerializeField] private Vector3 m_RotationAngle;
+    private void Update()
     {
-        GetComponent<Animator>().enabled = true;
-    }
-    private void OnBecameInvisible()
-    {
-        GetComponent<Animator>().enabled = false;
-    }
-    void Start()
-    {
-        GetComponent<Animator>().speed = Random.Range(0.75f, 1.25f);
+        transform.Rotate(m_RotationAngle * m_Speed * Time.deltaTime);
     }
 }

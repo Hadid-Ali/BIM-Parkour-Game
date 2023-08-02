@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private LevelData m_LevelDataScriptable;
+
+    [Header("Test Level")] [SerializeField]
+    private bool m_RunTestLevel;
+    [SerializeField] private int m_LevelNumber;
+
+    private void Start()
     {
+        if (m_RunTestLevel)
+        {
+            SpawnLevel(m_LevelNumber);
+            return;
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnLevel(int levelNumber)
     {
-        
+        Instantiate(m_LevelDataScriptable.m_LevelPrefab[levelNumber]);
     }
+    
+    
+    
 }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public int totalCoinInLevel;
     public List<DataEnemys> dataEnemies;
     public List<DataUpgrades> dataUpgrades;
+    public int playerPos = 0;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     {
         UIController.Instance.vongSang.SetActive(true);
         ManagerEffect.Instance.top1Effect.SetActive(false);
-        if (ManagerEffect.Instance.top == 1)
+        if (playerPos == 1)
         {
             UIController.Instance.ShowWin();
             // SendEventFirebase.SendEvent_level_win(PlayerprefSave.IdMap() + 1,totalCoinInLevel);
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void EatCoin(int value)
     {
+        print("ya chala");
         PlayerprefSave.Coin += value;
         totalCoinInLevel += value;
         UIController.Instance.ChangeTextCoin(PlayerprefSave.Coin);
