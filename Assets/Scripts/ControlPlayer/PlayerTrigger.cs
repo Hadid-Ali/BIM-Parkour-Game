@@ -68,14 +68,15 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             }
         }
 
-        // if (collision.gameObject.CompareTag("Slide"))
-        // {
-        //     playerController.anim.Play("SlideLoop", -1, 0);
-        // }
-        // else
-        // {
-        //     playerController.Run();
-        // }
+        if (collision.gameObject.CompareTag("Slide"))
+        {
+            playerController.anim.Play("SlideLoop", -1, 0);
+        }
+        else
+        {
+            if(playerController._isRun)
+            playerController.Run();
+        }
     }
 
     #endregion
