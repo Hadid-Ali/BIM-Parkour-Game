@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void EatCoin(int value)
     {
-        print("ya chala");
+        // print("ya chala");
         PlayerprefSave.Coin += value;
         totalCoinInLevel += value;
         UIController.Instance.ChangeTextCoin(PlayerprefSave.Coin);

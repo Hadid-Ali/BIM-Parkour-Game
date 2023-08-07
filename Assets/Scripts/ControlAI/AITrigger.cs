@@ -46,7 +46,7 @@ public class AITrigger : MonoBehaviour
             case "Win":
                 gameObject.GetComponent<SetTopChart>().OffOder();
                 GameManager.Instance.playerPos++;
-               aIController.Win(other.transform.GetChild(0).position);
+               aIController.Win();
                 break;
             case "checkPoint":
                 aIController.CheckPoint(other.transform.position);

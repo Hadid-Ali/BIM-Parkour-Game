@@ -656,7 +656,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         SoundManager.Instance.PlaySoundHoiSinh();
     }
     public bool isWin;
-    public void Win(Vector3 target)
+    public void Win()
     {
         rig.isKinematic = true;
         _isRun = false;

@@ -422,7 +422,7 @@ public class AIController : MonoBehaviour
         leoTuong = false;
         anim.Play("Run");
     }
-    public void Win(Vector3 target)
+    public void Win()
     {
 
         isWin = true;
@@ -430,9 +430,7 @@ public class AIController : MonoBehaviour
         _isRun = false;
         _isLive = false;
         rig.isKinematic = true;
-        anim.SetTrigger(AnimParameter.jump);
-        Vector3 newTarget = new Vector3(target.x + Random.Range(-1.0f, 1.0f), target.y, target.z + Random.Range(-0.1f, -0.5f));
-        transform.DOJump(newTarget, 1, 1, 1f).SetEase(Ease.Linear).OnComplete(() => { anim.SetTrigger("win"); });
+        anim.SetTrigger("win");
     }
     int rd = 1;
     public void NhayVuotRao()

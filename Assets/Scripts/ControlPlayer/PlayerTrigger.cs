@@ -137,12 +137,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "Win":
                     gameObject.GetComponent<SetTopChart>().OffOder();
                     GameManager.Instance.playerPos++;
-                    posPath[0] = other.transform.GetChild(1).position;
-                    posPath[1] = other.transform.GetChild(2).position;
-                    posPath[2] = other.transform.GetChild(3).position;
-                    posPath[3] = other.transform.GetChild(4).position;
-                    posPath[4] = other.transform.GetChild(5).position;
-                    playerController.Win(other.transform.GetChild(0).position);
+                    playerController.Win();
                     break;
                 
                 case "checkPoint":

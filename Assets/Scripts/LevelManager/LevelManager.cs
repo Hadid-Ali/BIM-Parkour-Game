@@ -10,20 +10,32 @@ public class LevelManager : MonoBehaviour
     [Header("Test Level")] [SerializeField]
     private bool m_RunTestLevel;
     [SerializeField] private int m_LevelNumber;
+    [SerializeField] private Transform LevelParent;
 
     private void Start()
+    {
+
+        SpawnLevel();
+
+    }
+
+    void SpawnLevel()
     {
         if (m_RunTestLevel)
         {
             SpawnLevel(m_LevelNumber);
-            return;
+        }
+        else
+        {
+            SpawnLevel(LevelSelection.m_LevelNum);
         }
         
     }
 
     void SpawnLevel(int levelNumber)
     {
-        Instantiate(m_LevelDataScriptable.m_LevelPrefab[levelNumber]);
+        var level = Instantiate(m_LevelDataScriptable.m_LevelPrefab[levelNumber], LevelParent);
+        level.SetActive(true);
     }
     
     

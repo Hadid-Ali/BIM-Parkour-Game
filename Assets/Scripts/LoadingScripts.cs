@@ -7,6 +7,7 @@ using DG.Tweening;
 public class LoadingScripts : MonoBehaviour
 {
     [SerializeField] Image fillAmount;
+    [SerializeField] private string m_LoadScene;
     void Start()
     {
         StartCoroutine(LoadYourAsyncScene());
@@ -23,7 +24,7 @@ public class LoadingScripts : MonoBehaviour
         yield return new WaitForSeconds(.4f);
         fillAmount.DOFillAmount(.6f, .5f);
         yield return new WaitForSeconds(.5f);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_LoadScene);
         yield return new WaitForSeconds(.5f);
         fillAmount.fillAmount = .8f;
         // Wait until the asynchronous scene fully loads

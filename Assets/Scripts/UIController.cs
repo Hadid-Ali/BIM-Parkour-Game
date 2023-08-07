@@ -71,7 +71,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
 
     void restartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game Play");
     }
     public void DelayStart()
     {
@@ -416,7 +416,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void btnNextmap()
     {
-        if (PlayerprefSave.IdMap() < RandomMapController.Instance.listBlockLevels.Count - 1)
+        SceneManager.LoadScene("Menu");
+        /*if (PlayerprefSave.IdMap() < RandomMapController.Instance.listBlockLevels.Count - 1)
         {
             if (txtWin.activeInHierarchy)
             {
@@ -435,9 +436,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
         }
         else
         {
-            PlayerprefSave.SetMap = 0;
             btnReplayClick();
-        }
+        }*/
     }
     public void BtnGetX5Coin()
     {
