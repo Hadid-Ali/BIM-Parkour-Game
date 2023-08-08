@@ -75,7 +75,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         else
         {
             if(playerController._isRun)
-            playerController.Run();
+            playerController.anim.Play("Run");
         }
     }
 
@@ -91,68 +91,23 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         if (playerController._isLive)
             switch (other.tag)
             {
-                //case "vatcan":
-                //    if (playerController.checkAnimPlay("Jump"))
-                //    {
-                //        playerController.Die();
-                //    }
-                //    break;
-                /*case "slide":
-                    if (!playerController._isPowerUp)
-                        playerController.Slide();
-                    else
-                    {
-                        Vibration.Vibrate(15);
-                        TestCamera.Instance.CameraShake();
-                        other.gameObject.SetActive(false);
-                        ManagerEffect.Instance.ShowFxStar(other.transform.position);
-                    }
-                    break;*/
                 case "climb":
                     playerController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                     break;
-                /*case "nhayxa":
-                    if (!playerController._isPowerUp)
-                        playerController.Nhayxa();
-                    else
-                    {
-                        TestCamera.Instance.CameraShake();
-                        other.gameObject.SetActive(false);
-                        ManagerEffect.Instance.ShowFxStar(other.transform.position);
-                        Vibration.Vibrate(15);
-                    }
-
-                    break;*/
-                /*case "NhayVuotRao":
-                    if (!playerController._isPowerUp)
-                        playerController.NhayVuotRao();
-                    else
-                    {
-                        TestCamera.Instance.CameraShake();
-                        other.gameObject.SetActive(false);
-                        ManagerEffect.Instance.ShowFxStar(other.transform.position);
-                        Vibration.Vibrate(15);
-                    }
-                    break;*/
                 case "Win":
                     gameObject.GetComponent<SetTopChart>().OffOder();
                     GameManager.Instance.playerPos++;
                     playerController.Win();
                     break;
-                
                 case "checkPoint":
                     playerController.CheckPoint(other.transform.position);
                     break;
-                //case "booster":
-                //    playerController.EatItemPower(0.5f);
-                //    break;
                 case "coin":
-                    //ManagerEffect.Instance.EffectTrigger(other.transform.GetChild(0).position);
                     GameManager.instance.EatCoin(100);
                     other.gameObject.SetActive(false);
                     break;
                 case "BatNhay":
-                    playerController.BatNhay();
+                    playerController.Jump();
                     break;
                 case "jump":
                     playerController.Die();
@@ -162,9 +117,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     break;
                 case "slide":
                     if (!playerController._isSliding)
-                    {
                         playerController.Die();
-                    }
                     break;
             }
     }
@@ -184,7 +137,6 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             hit.collider.transform.DOScale(.03f, 0.2f);
             hit.collider.transform.DOMove(posStarEat.position, .2f).OnComplete(() =>
             {
-                //GameManager.instance.EatCoin(1);
                 ManagerEffect.Instance.EffectTrigger(hit.collider.gameObject.transform.position);
             });
             hit.collider.enabled = false;

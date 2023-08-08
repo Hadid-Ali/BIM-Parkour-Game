@@ -24,13 +24,8 @@ public class SwapDetection : MonoBehaviour
                 if (playerTransform.IsGrounded())
                 {
                     playerDirection = Vector2.up ;
-                    playerTransform.BatNhay(); //High Jump 
-                    //playerTransform.Nhayxa();            //Short Jump
-                    //playerTransform.Jump();
-
+                    playerTransform.Jump();
                 }
-                              
-
                 break ;
             case "Down":
                 playerDirection = Vector2.down ;
