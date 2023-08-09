@@ -46,6 +46,11 @@ public class TestCamera : MonoBehaviourSingleton<TestCamera>
         {
             Camera.main.transform.DOMove(b, 0.5f).SetEase(Ease.Linear);
         });
+        DontCameraFollow();
+        bg.SetActive(false);
+        Camera.main.GetComponent<CinemachineBrain>().enabled = false;
+        Camera.main.orthographic = false;
+        Camera.main.fieldOfView = 60f;
     }
     public CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noiseCam;

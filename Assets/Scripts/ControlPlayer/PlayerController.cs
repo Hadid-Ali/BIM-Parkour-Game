@@ -656,6 +656,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         SoundManager.Instance.PlaySoundHoiSinh();
     }
     public bool isWin;
+
     public void Win()
     {
         rig.isKinematic = true;
@@ -663,40 +664,30 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         _isLive = false;
         isWin = true;
         lockMove = true;
-        //Jump();
-        txtText.SetActive(false);
-        this.PostEvent(EventID.OffText);
-        this.PostEvent(EventID.PauseAI);
-        Invoke("DelaySlow", 2.4f);
-        GameManager.instance.GameOver();
-        //ManagerEffect.Instance.OffMoveSmoke();
-        /*transform.DOJump(target, 0.5f, 1, 1f).SetEase(Ease.Linear).OnComplete(() =>
-        {*/
 
-            TestCamera.Instance.camWin();
-            TestCamera.Instance.DontCameraFollow();
-            Camera.main.GetComponent<CinemachineBrain>().enabled = false;
-            TestCamera.Instance.bg.SetActive(false);
-            Camera.main.orthographic = false;
-            Camera.main.fieldOfView = 60f;
-            //TestCamera.Instance.wincam.SetActive(true);
-            Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
-            //Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
-            if (GameManager.Instance.playerPos == 1)
-            {
-                anim.SetTrigger("win");
-            }
+        Invoke("DelaySlow", 2.4f);
+
+        GameManager.instance.GameOver();
+        TestCamera.Instance.camWin();
+        Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
+        //Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
+        if (GameManager.Instance.playerPos == 1)
+        {
+            anim.SetTrigger("win");
+        }
+        else
+        {
+            if (Random.Range(0, 2) == 0)
+                anim.Play("lose1", -1, 0);
             else
-            {
-                if (Random.Range(0, 2) == 0)
-                    anim.Play("lose1", -1, 0);
-                else
-                    anim.Play("lose2", -1, 0);
-            }
+                anim.Play("lose2", -1, 0);
+        }
+
         /*});*/
         checkLonvong = false;
         UIController.Instance.btnPowerUp.gameObject.SetActive(false);
     }
+
     void DelaySlow()
     {
         SlowMotion.Instance.SlowNoAudio(2f, .3f);
