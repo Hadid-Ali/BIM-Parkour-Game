@@ -34,4 +34,13 @@ public class AIResetStatus : MonoBehaviour
         aIController.isAction = false;
         aIController._isRun = true;
     }
+    
+    void StartRun()
+    {
+        aIController.GetComponent<Rigidbody>().isKinematic = false;
+    }    
+    void Pause()
+    {
+        aIController.GetComponent<Rigidbody>().isKinematic = true;
+    }
 }

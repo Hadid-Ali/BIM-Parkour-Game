@@ -68,7 +68,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             }
         }
 
-        if (collision.gameObject.CompareTag("Slide"))
+        /*if (collision.gameObject.CompareTag("Slide"))
         {
             playerController.anim.Play("SlideLoop", -1, 0);
         }
@@ -76,7 +76,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         {
             if(playerController._isRun)
             playerController.Run();
-        }
+        }*/
     }
 
     #endregion

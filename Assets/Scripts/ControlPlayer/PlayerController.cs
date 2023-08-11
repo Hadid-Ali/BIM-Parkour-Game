@@ -281,7 +281,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     {
                         if (batXa)
                         {
-                            anim.Play("LandRoll", -1, 0);
+                            print("come here");
+                            //anim.Play("LandRoll", -1, 0);
                             batXa = false;
                             tempPower -= 1f;
 //                            TestCamera.Instance.CameraShake();
@@ -443,8 +444,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 endLeoTuong = true;
                 _isRun = false;
                 checkFirst = false;
-                transform.DOMoveY(transform.position.y + .12f, .2f);
-                transform.DOMoveZ(transform.position.z + .02f, .2f);
+                transform.DOMoveY(transform.position.y + .2f, .2f);
+                transform.DOMoveZ(transform.position.z + .1f, .2f);
 
             }
         }
@@ -480,8 +481,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
         {
             //Debug.Log("Jump");
-            Jump();
-            ManagerEffect.Instance.EffectJump();
+            //Jump();
+            //ManagerEffect.Instance.EffectJump();
         }
         //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
         //     new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.max.z), capsuleCollider.radius, layerGround))

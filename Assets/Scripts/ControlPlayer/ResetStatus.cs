@@ -33,7 +33,19 @@ public class ResetStatus : MonoBehaviour
     }
     void ResetJump()
     {
-        anim.SetInteger(AnimParameter.jump, 0);
+        // anim.SetInteger(AnimParameter.jump, 0);
+        
+        PlayerController.Instance.Run();
+
+    }
+
+    void StartRun()
+    {
+        PlayerController.Instance.rig.isKinematic = false;
+    }    
+    void Pause()
+    {
+        PlayerController.Instance.rig.isKinematic = true;
     }
     void ResetLeoTuong()
     {

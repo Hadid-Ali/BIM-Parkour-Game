@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         UIController.Instance.slidePowerUp.SetActive(false);
         UIController.Instance.UiRuntime.SetActive(false);
         Invoke("Delay", 3f);
-        ManagerEffect.Instance.OffTrial();
+        //ManagerEffect.Instance.OffTrial();
     }
     void Delay()
     {
         UIController.Instance.vongSang.SetActive(true);
-        ManagerEffect.Instance.top1Effect.SetActive(false);
+        //ManagerEffect.Instance.top1Effect.SetActive(false);
         if (playerPos == 1)
         {
             UIController.Instance.ShowWin();

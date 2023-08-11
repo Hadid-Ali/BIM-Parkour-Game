@@ -35,7 +35,7 @@ public class AIController : MonoBehaviour
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
         rig = GetComponent<Rigidbody>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(1).GetComponent<Animator>();
         EventDispatcher.Instance.RegisterListener(EventID.StartAI, (param) => StartGame());
         EventDispatcher.Instance.RegisterListener(EventID.PauseAI, (param) => PauseRun());
         EventDispatcher.Instance.RegisterListener(EventID.ContinueAI, (param) => ContinueRun());

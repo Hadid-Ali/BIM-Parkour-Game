@@ -21,6 +21,8 @@ public class AITrigger : MonoBehaviour
             aIController.transform.position = new Vector3(aIController.transform.position.x, aIController.transform.position.y - 2, aIController.transform.position.z);
         }
     }
+
+    private bool reach = true;
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -46,7 +48,11 @@ public class AITrigger : MonoBehaviour
             case "Win":
                 gameObject.GetComponent<SetTopChart>().OffOder();
                 GameManager.Instance.playerPos++;
-               aIController.Win();
+                if (reach)
+                {
+                    aIController.Win();
+                    reach = false;
+                }
                 break;
             case "checkPoint":
                 aIController.CheckPoint(other.transform.position);
