@@ -61,4 +61,6 @@ public class ResetStatus : MonoBehaviour
     {
         PlayerController.Instance.Die();
     }
+    
+    
 }

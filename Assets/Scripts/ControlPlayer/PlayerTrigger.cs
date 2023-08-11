@@ -160,6 +160,9 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "rotatecam":
                     TestCamera.Instance.ChangeRotateCamera();
                     break;
+                case "EndClimb":
+                    playerController.ClimbEnd();
+                    break;
                 case "slide":
                     if (!playerController._isSliding)
                     {

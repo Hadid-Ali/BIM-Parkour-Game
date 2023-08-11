@@ -27,6 +27,17 @@ TagManager:
   - SlideHurdle
   - LongRoll
   - Slide
+  - PlayerUI
+  - Weapon
+  - Point
+  - MovementLines
+  - Interactable
+  - FreeClimb
+  - ClimbDirection
+  - Ladder
+  - LedgeLimit
+  - StartClimb
+  - EndClimb
   layers:
   - Default
   - TransparentFX

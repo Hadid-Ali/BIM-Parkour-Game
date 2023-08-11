@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     //check truoc mat ben phai
     public bool IsFrontUpRight()
     {
+        
         return Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.max.y, capsuleCollider.bounds.max.z),
             new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.max.y, capsuleCollider.bounds.max.z), capsuleCollider.radius, layerGround);
     }
@@ -422,7 +423,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     }
                 }
 
-                ClimbEnd();
+                //ClimbEnd();
 
             }
         }
@@ -434,21 +435,21 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void ClimbEnd()
     {
-        if (!IsFrontUp())
-        {
-            if (!checkAnimPlay("WallClimbingEnd"))
+        /*if (!IsFrontUp())
+        {*/
+            if (!checkAnimPlay("WallClimbingEnd0")/* && !checkAnimPlay("WallClimbingEnd0")*/)
             {
                 lockMove = true;
-                anim.Play("WallClimbingEnd", -1, 0);
+                anim.Play("WallClimbingEnd0", -1, 0);
                 //leoTuong = false;
                 endLeoTuong = true;
                 _isRun = false;
                 checkFirst = false;
-                transform.DOMoveY(transform.position.y + .2f, .2f);
+                transform.DOMoveY(transform.position.y + .5f, .1f).SetEase(Ease.InQuad);
                 transform.DOMoveZ(transform.position.z + .1f, .2f);
 
             }
-        }
+        /*}*/
         
     }
 

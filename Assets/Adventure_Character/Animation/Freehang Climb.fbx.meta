@@ -46,14 +46,14 @@ ModelImporter:
       lastFrame: 66
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: 0.8
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
@@ -72,13 +72,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.91539705
         functionName: ResetLeoTuong
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5046642
-        functionName: OffSet
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
