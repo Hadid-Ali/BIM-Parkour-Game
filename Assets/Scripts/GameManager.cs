@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void GetX5Coin()
     {
-        totalCoinInLevel *= 5;
+        totalCoinInLevel *= 2;
         PlayerprefSave.Coin += totalCoinInLevel;
     }
     public void AddDataEnemy(int level, float ai1, float ai2, float ai3, float ai4, float boss)

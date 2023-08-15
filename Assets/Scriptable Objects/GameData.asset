@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   m_Coins: 200
-  m_CurrentLevel: 0
+  m_CurrentLevel: 1

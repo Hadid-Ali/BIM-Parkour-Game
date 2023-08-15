@@ -71,7 +71,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
 
     void restartGame()
     {
-        SceneManager.LoadScene("Game Play");
+        SceneManager.LoadScene("LoadingLevel");
     }
     public void DelayStart()
     {
@@ -148,22 +148,22 @@ public class UIController : MonoBehaviourSingleton<UIController>
         panelWin.SetActive(true);
         txtWin.SetActive(true);
         txtlose.SetActive(false);
-        btnPowerUp.transform.localScale = Vector3.zero;
+        //btnPowerUp.transform.localScale = Vector3.zero;
         txtCoinEndGame.text = GameManager.instance.totalCoinInLevel.ToString();
         PlayerprefSave.keyReward++;
         if (PlayerprefSave.keyReward > 3)
         {
             PlayerprefSave.keyReward = 3;
         }
-        showKey(PlayerprefSave.keyReward);
-        for (int i = 1; i < DataGame.Instance.dataCharacter.characters.Length; i++)
+        //showKey(PlayerprefSave.keyReward);
+        /*for (int i = 1; i < DataGame.Instance.dataCharacter.characters.Length; i++)
         {
             if (PlayerprefSave.IdMap() == DataGame.Instance.dataCharacter.characters[i].levelUnlock - 1)
             {
                 showUINewSkin(true);
                 PlayerprefSave.idTemp = i;
             }
-        }
+        }*/
         PlayerprefSave.SetMap++;
     }
     [Header("Key open box reward")]
@@ -258,6 +258,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     public void ShowLose(int top)
     {
         panelWin.SetActive(true);
+        btnVideoX5.gameObject.SetActive(false);
         txtlose.SetActive(true);
         txtWin.SetActive(false);
         txtCoinEndGame.text = GameManager.instance.totalCoinInLevel.ToString();
@@ -294,7 +295,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
                 txtThutu.text = "10TH";
                 break;
         }
-        btnPowerUp.transform.localScale = Vector3.zero;
+        //btnPowerUp.transform.localScale = Vector3.zero;
     }
     #endregion
 
@@ -416,7 +417,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void btnNextmap()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("LevelSelection");
         /*if (PlayerprefSave.IdMap() < RandomMapController.Instance.listBlockLevels.Count - 1)
         {
             if (txtWin.activeInHierarchy)
@@ -441,7 +442,9 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void BtnGetX5Coin()
     {
-        if (IronSource.Agent.isRewardedVideoAvailable())
+        RecievedX5Coin();
+
+        /*if (IronSource.Agent.isRewardedVideoAvailable())
         {
             PlayerprefSave.SelectTypeVideo(TypeRewardVideo.x5);
             IronSource.Agent.showRewardedVideo();
@@ -450,12 +453,12 @@ public class UIController : MonoBehaviourSingleton<UIController>
         {
             Debug.Log("video reward not available");
             SoundManager.Instance.ShowNotification(canvasMain.transform);
-        }
+        }*/
     }
     public void RecievedX5Coin()
     {
         btnVideoX5.gameObject.SetActive(false);
-        btnTapContinue.gameObject.SetActive(false);
+        //btnTapContinue.gameObject.SetActive(false);
         btnClaim.gameObject.SetActive(true);
         GameManager.instance.GetX5Coin();
         txtCoinEndGame.text = GameManager.instance.totalCoinInLevel.ToString();

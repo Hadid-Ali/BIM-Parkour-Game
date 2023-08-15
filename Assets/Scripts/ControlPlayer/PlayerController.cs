@@ -282,14 +282,16 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 {
                     if (checkFirst)
                     {
+                        if (m_LandRoll)
+                        {
+                            anim.Play("LandRoll", -1, 0);
+                            m_LandRoll = false;
+                        }
+                        
                         if (batXa)
                         {
                             print("come here");
-                            if (m_LandRoll)
-                            {
-                                anim.Play("LandRoll", -1, 0);
-                                m_LandRoll = false;
-                            }
+                            
                             
                             batXa = false;
                             tempPower -= 1f;
