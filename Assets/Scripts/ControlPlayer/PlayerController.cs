@@ -270,6 +270,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             }
         }
     }
+
+    public bool m_LandRoll = false; 
     private void Update()
     {
         if (_isLive)
@@ -283,7 +285,12 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                         if (batXa)
                         {
                             print("come here");
-                            //anim.Play("LandRoll", -1, 0);
+                            if (m_LandRoll)
+                            {
+                                anim.Play("LandRoll", -1, 0);
+                                m_LandRoll = false;
+                            }
+                            
                             batXa = false;
                             tempPower -= 1f;
 //                            TestCamera.Instance.CameraShake();

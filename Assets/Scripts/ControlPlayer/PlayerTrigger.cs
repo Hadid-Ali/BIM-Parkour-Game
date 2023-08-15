@@ -163,6 +163,9 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "EndClimb":
                     playerController.ClimbEnd();
                     break;
+                case "StartClimb":
+                    playerController.m_LandRoll = true;
+                    break;
                 case "slide":
                     if (!playerController._isSliding)
                     {

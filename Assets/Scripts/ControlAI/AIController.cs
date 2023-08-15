@@ -290,7 +290,7 @@ public class AIController : MonoBehaviour
                         leoTuong = false;
                         _isRun = false;
                         checkFirst = false;
-                        transform.DOMoveY(transform.position.y + .12f, .2f);
+                        transform.DOMoveY(transform.position.y + .4f, .2f);
                         transform.DOMoveZ(transform.position.z + .02f, .2f);
                         //{
                         //    isAction = false;

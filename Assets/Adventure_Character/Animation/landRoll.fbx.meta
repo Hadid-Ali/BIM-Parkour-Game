@@ -42,7 +42,7 @@ ModelImporter:
       name: LandRoll
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 4.8
       lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
