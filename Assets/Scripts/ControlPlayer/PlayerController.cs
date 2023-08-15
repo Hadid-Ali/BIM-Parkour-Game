@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public bool _isSliding;
     public bool _isPowerUp;
     public float speed;
+    [SerializeField] private float m_JumpFoce = 2f;
     private float speedMoveX;
     private float heigh_Jump;
     private float speed_Booster;
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         
-        BatNhay();
+        JumpAction();
         //Slide();
         setIdle();
         batXa = false;
@@ -739,7 +740,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         }
     }
     bool batXa;
-    public void BatNhay() // high Jump Function
+    public void JumpAction() // high Jump Function
     {
         // SoundManager.Instance.PlaySoundBatXa();
         //EatItemPower(0.5f);
@@ -752,7 +753,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         batXa = true;
         rig.velocity = Vector3.zero;
         tempPower += 1f;
-        rig.AddForce(0, 4, 0, ForceMode.Impulse);
+        rig.AddForce(1, m_JumpFoce, 0, ForceMode.Impulse);
         // ManagerEffect.Instance.OffMoveSmoke();
         // ManagerEffect.Instance.ShowFxBatXa();
         // ManagerEffect.Instance.ShowFxSongAm(transform.position);
