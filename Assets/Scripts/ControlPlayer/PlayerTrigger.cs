@@ -152,7 +152,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     other.gameObject.SetActive(false);
                     break;
                 case "BatNhay":
-                    playerController.BatNhay();
+                    playerController.JumpAction();
                     break;
                 case "jump":
                     playerController.Die();
