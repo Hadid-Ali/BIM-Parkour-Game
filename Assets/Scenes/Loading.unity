@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillAmount: {fileID: 492230239}
-  m_LoadScene: Menu
+  m_LoadScene: MainMenu
 --- !u!114 &1339126850
 MonoBehaviour:
   m_ObjectHideFlags: 0

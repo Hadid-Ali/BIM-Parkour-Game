@@ -23,8 +23,9 @@ public static class PlayerprefSave
     /// </summary>
     public static int SetMap
     {
-        set { PlayerPrefs.SetInt("mapcurrent", value); }
-        get { return PlayerPrefs.GetInt("mapcurrent"); }
+        set { SaveLoadData.m_data.Level = value;
+            SaveLoadData.SaveData(); }
+        get { return SaveLoadData.m_data.Level; }
     }
     /// <summary>
     /// level speed
