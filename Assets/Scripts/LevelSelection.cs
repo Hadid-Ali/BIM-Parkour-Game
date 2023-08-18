@@ -23,6 +23,10 @@ public class LevelSelection : MonoBehaviour
 
             if (i < SaveLoadData.m_data.Level)
             {
+                if (i > LevelBtns.Count)
+                {
+                    return;
+                }
                 LevelBtns[i].interactable = true;
             }
         }

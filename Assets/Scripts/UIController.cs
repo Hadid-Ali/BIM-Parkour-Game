@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DynamicFogAndMist;
 using DG.Tweening;
+using TMPro;
 
 public class UIController : MonoBehaviourSingleton<UIController>
 {
@@ -41,6 +42,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     private float totalDistance;
     private float startPosition;
     private bool checkTienTrinh;
+    public GameObject LosePanel;
     public GameObject canvasMain;
     public GameObject canvasNewSkin;
     [Header("PowerUp")]
@@ -49,9 +51,16 @@ public class UIController : MonoBehaviourSingleton<UIController>
     [SerializeField] GameObject iconShop;
     
     [SerializeField] Button m_restartBTN;
+    [SerializeField] private Toggle m_SettingBtn;
+    [SerializeField] private Slider m_PlayerSpeedSliderm, _PlayerAnimSpeedSlider;
+    [SerializeField] private TextMeshProUGUI m_PlayerSpeedText, m_PlayerAnimSpeedText;
     private void Start()
     {
         m_restartBTN.onClick.AddListener(restartGame);
+        //m_SettingBtn.onValueChanged.AddListener(settingBtn);
+        m_SettingBtn.onValueChanged.AddListener(delegate {
+            settingBtn(m_SettingBtn);
+        });
         //ChangeMap(PlayerprefSave.IdMap());
         ChangeTextCoin(PlayerprefSave.Coin);
         txtLevel.text = "LEVEL " + (PlayerprefSave.IdMap() + 1).ToString() + "/100";
@@ -69,9 +78,36 @@ public class UIController : MonoBehaviourSingleton<UIController>
         }
     }
 
-    void restartGame()
+    public void restartGame()
     {
         SceneManager.LoadScene("LoadingLevel");
+    }
+
+    public void PlayerSpeed(float speed)
+    {
+        GameEvents.PlayerSpeed.Raise(speed);
+        m_PlayerSpeedText.text = speed.ToString("F1");
+    }
+    public void PlayerAnimSpeed(float speed)
+    {
+        GameEvents.PlayerAnimSpeed.Raise(speed);
+        m_PlayerAnimSpeedText.text = speed.ToString("F1");
+    }
+    public void settingBtn(Toggle status)
+    {
+        GameManager.instance.ActiveTouchManager(!status.isOn);
+        //print(status);
+        if (status.isOn)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        
+        m_PlayerSpeedSliderm.gameObject.SetActive(status.isOn);
+        _PlayerAnimSpeedSlider.gameObject.SetActive(status.isOn);
     }
     public void DelayStart()
     {
@@ -164,8 +200,20 @@ public class UIController : MonoBehaviourSingleton<UIController>
                 PlayerprefSave.idTemp = i;
             }
         }*/
+        
         PlayerprefSave.SetMap++;
     }
+
+    public void LosingPanel()
+    {
+        Invoke("DelayLosingPanel",1f);
+    }
+
+    void DelayLosingPanel()
+    {
+        LosePanel.SetActive(true);
+    }
+    
     [Header("Key open box reward")]
     [SerializeField] GameObject btnOpenScenceBestReward;
     [SerializeField] GameObject[] objKeys;

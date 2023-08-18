@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public List<DataEnemys> dataEnemies;
     public List<DataUpgrades> dataUpgrades;
     public int playerPos = 0;
+    [SerializeField] GameObject touchManager;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -24,12 +25,18 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void GameStart()
     {
+        ActiveTouchManager(true);
         player.isKinematic = false;
         PlayerController.Instance.StartGame();
         UIController.Instance.GameStart();
         this.PostEvent(EventID.StartAI);
         this.PostEvent(EventID.Spawn);
         // SendEventFirebase.SendEvent_level_start(PlayerprefSave.SetMap + 1);
+    }
+
+    public void ActiveTouchManager(bool status)
+    {
+        touchManager.SetActive(status);
     }
     public void GameOver()
     {

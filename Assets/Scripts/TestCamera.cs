@@ -39,18 +39,18 @@ public class TestCamera : MonoBehaviourSingleton<TestCamera>
     public void camWin()
     {
         camFollow = false;
-        Vector3 a = pos1.transform.position;
-        Vector3 b = pos2.transform.position;
-        Camera.main.transform.DORotate(new Vector3(18.6f, -180f, 0), 1f).SetEase(Ease.Linear);
+        /*Vector3 a = pos1.transform.position;
+        Vector3 b = pos2.transform.position;*/
+        /*Camera.main.transform.DORotate(new Vector3(18.6f, -180f, 0), 1f).SetEase(Ease.Linear);
         Camera.main.transform.DOMove(a, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             Camera.main.transform.DOMove(b, 0.5f).SetEase(Ease.Linear);
-        });
+        });*/
         DontCameraFollow();
-        bg.SetActive(false);
+        //bg.SetActive(false);
         Camera.main.GetComponent<CinemachineBrain>().enabled = false;
-        Camera.main.orthographic = false;
-        Camera.main.fieldOfView = 60f;
+        //Camera.main.orthographic = false;
+        //.main.fieldOfView = 60f;
     }
     public CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noiseCam;

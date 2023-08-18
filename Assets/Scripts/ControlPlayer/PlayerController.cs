@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Observer;
+using DG.Tweening;
 using Cinemachine;
 
 public class PlayerController : MonoBehaviourSingleton<PlayerController>
@@ -177,8 +178,29 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     //check truoc mat
     public bool IsFrontUp()
     {
-        return Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z),
+        /*turn Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z),
             new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z), capsuleCollider.radius / 3, layerGround);
+    */
+        RaycastHit hit;
+        //print(Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, out hit, 0.09f, layerGround));
+        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, Color.red);
+        return Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, out hit, 0.1f, layerGround);
+    }
+
+    public void CheckClimb()
+    {
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, capsuleCollider.radius / 3, layerGround))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.Log("Did not Hit");
+        }
     }
     //check truoc mat ben trai
     public bool IsFrontUpLeft()
@@ -418,6 +440,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 {
                     StartClimbing();
                 }
+
+                //CheckClimb();
             }
             else
             {
@@ -433,7 +457,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     }
                 }
 
-                //ClimbEnd();
+                ClimbEnd();
 
             }
         }
@@ -445,8 +469,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void ClimbEnd()
     {
-        /*if (!IsFrontUp())
-        {*/
+        if (!IsFrontUp())
+        {
             if (!checkAnimPlay("WallClimbingEnd0")/* && !checkAnimPlay("WallClimbingEnd0")*/)
             {
                 lockMove = true;
@@ -455,11 +479,11 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 endLeoTuong = true;
                 _isRun = false;
                 checkFirst = false;
-                transform.DOMoveY(transform.position.y + .5f, .1f).SetEase(Ease.InQuad);
+                transform.DOMoveY(transform.position.y + .51f, .1f).SetEase(Ease.InQuad);
                 transform.DOMoveZ(transform.position.z + .1f, .2f);
 
             }
-        /*}*/
+        }
         
     }
 
@@ -638,7 +662,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         _isLive = false;
         //anim.SetInteger(AnimParameter.wallclimb, 0);
         //this.PostEvent(EventID.PauseAI);
-        Invoke("DelayReSpawn", 1f);
+        //Invoke("DelayReSpawn", 1f);
+        Lose();
     }
     void DelayReSpawn()
     {
@@ -681,7 +706,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
         GameManager.instance.GameOver();
         TestCamera.Instance.camWin();
-        Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
+        transform.DORotate(new Vector3(0, 90, 0), 0.3f);
+        //Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
         //Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
         if (GameManager.Instance.playerPos == 1)
         {
@@ -698,6 +724,18 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         /*});*/
         checkLonvong = false;
         UIController.Instance.btnPowerUp.gameObject.SetActive(false);
+    }
+    
+    public void Lose()
+    {
+        rig.isKinematic = true;
+        _isRun = false;
+        _isLive = false;
+        isWin = true;
+        lockMove = true;
+
+        checkLonvong = false;
+        UIController.Instance.LosingPanel();
     }
 
     void DelaySlow()
@@ -748,10 +786,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //EatItemPower(0.5f);
         isAction = true;
         // checkFirst = true;
-        if (Random.Range(0, 2) == 0)
+        int i = Random.Range(0, 3);
+        if (i == 0)
             anim.Play("JumpRoll", -1, 0);
-        else
+        else if(i == 1)
             anim.Play("JumpRoll2", -1, 0);
+        else
+        {
+            anim.Play("JumpRoll3", -1, 0);
+        }
         batXa = true;
         rig.velocity = Vector3.zero;
         tempPower += 1f;

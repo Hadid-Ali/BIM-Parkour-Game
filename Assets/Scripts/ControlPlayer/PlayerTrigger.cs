@@ -32,9 +32,9 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         if (collision.gameObject.CompareTag("Die2"))
         {
             //TestCamera.Instance.CameraShake();
-            SoundManager.Instance.PlaySoundDie();
+            //SoundManager.Instance.PlaySoundDie();
             playerController.Die();
-            playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);
+            //playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);
         }
 
         if (collision.gameObject.CompareTag("RoleOverHurdle"))
@@ -160,9 +160,9 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 case "rotatecam":
                     TestCamera.Instance.ChangeRotateCamera();
                     break;
-                case "EndClimb":
+                /*case "EndClimb":
                     playerController.ClimbEnd();
-                    break;
+                    break;*/
                 case "StartClimb":
                     playerController.m_LandRoll = true;
                     break;

@@ -61,6 +61,10 @@ public class ResetStatus : MonoBehaviour
     {
         PlayerController.Instance.Die();
     }
-    
+
+    void Roll()
+    {
+        PlayerController.Instance.m_LandRoll = true;
+    }
     
 }

@@ -22,6 +22,23 @@ public class GameEvent
         Event?.Invoke();
     }
 }
+
+public class GameEvent<T1>
+{
+    private event Action<T1> Event;
+    public void Register(Action<T1> method)
+    {
+        Event += method;
+    }
+    public void UnRegister(Action<T1> method)
+    {
+        Event -= method;
+    }
+    public void Raise(T1 param)
+    {
+        Event?.Invoke(param);
+    }
+}
 public class GameEvent<T1,T2>
 {
     private event Action<T1,T2> Event;
