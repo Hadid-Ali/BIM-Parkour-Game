@@ -372,6 +372,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 else
                 {
                     checkFirst = true;
+                    
                     //chay tren tuong
                     /*if (IsLeft())
                     {
