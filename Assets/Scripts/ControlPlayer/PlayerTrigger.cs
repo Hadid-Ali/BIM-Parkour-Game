@@ -9,6 +9,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
     public Transform posStarEat;
     public LayerMask layer;
     public Vector3[] posPath = new Vector3[5];
+    [SerializeField]private bool CheckSliding = false;
     #region OnCollision
     private void OnCollisionEnter(Collision collision)
     {
@@ -39,18 +40,18 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
 
         if (collision.gameObject.CompareTag("RoleOverHurdle"))
         {
-            if (playerController.HitCount < 2)
-            {
-                playerController.HitCount++;
+            /*if (playerController.HitCount < 2)
+            {*/
+                //playerController.HitCount++;
                 playerController.anim.Play("HurdleJump", -1, 0);
-                playerController.rig.AddForce(new Vector3(0f, 2f, 0), ForceMode.Impulse);
+                playerController.rig.AddForce(new Vector3(0f, 3f, 0), ForceMode.Impulse);
                 //playerController.Run();
-            }
-            else
+            /*}*/
+            /*else
             {
                 playerController.Die();
                 playerController.HitCount = 0;
-            }
+            }*/
         }
         if (collision.gameObject.CompareTag("LongRoll"))
         {
@@ -68,15 +69,26 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             }
         }
 
-        /*if (collision.gameObject.CompareTag("Slide"))
+        if (collision.gameObject.CompareTag("Slide"))
         {
-            playerController.anim.Play("SlideLoop", -1, 0);
+            if (!checkAnimPlay("SlideLoop"))
+            {
+                playerController.anim.Play("SlideLoop", -1, 0);
+                CheckSliding = true;
+            }
         }
-        else
+        else if (CheckSliding)
         {
-            if(playerController._isRun)
+            CheckSliding = false;
             playerController.Run();
-        }*/
+        }
+
+        
+    }
+    
+    public bool checkAnimPlay(string nameAnim)
+    {
+        return playerController.anim.GetCurrentAnimatorStateInfo(0).IsName(nameAnim);
     }
 
     #endregion
@@ -171,6 +183,12 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     {
                         playerController.Die();
                     }
+                    break;
+                case "RoleOverHurdle":
+                    playerController.anim.Play("HurdleJump", -1, 0);
+                    playerController.speed /= 2f;
+                    playerController.isAction = true;
+                    //playerController.rig.AddForce(new Vector3(0f, 2.3f, 0), ForceMode.Impulse);
                     break;
             }
     }

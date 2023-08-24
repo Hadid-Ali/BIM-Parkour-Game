@@ -67,7 +67,10 @@ public class AITrigger : MonoBehaviour
                 aIController.BatNhay();
                 break;
             case "jump":
-                aIController.Jump(5);
+                aIController.Jump(3);
+                break;
+            case "RoleOverHurdle":
+                aIController.BatNhay();
                 break;
         }
     }

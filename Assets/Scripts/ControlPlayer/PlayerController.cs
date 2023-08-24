@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     private bool checkLonvong;
     private bool reduceVelocity;
     private float tempReduce;
-
+    public float defaultspeed;
 
     public int HitCount = 0;
     private void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        
+        defaultspeed = speed;
         JumpAction();
         //Slide();
         setIdle();
@@ -372,70 +372,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 else
                 {
                     checkFirst = true;
+
+                    if (!isAction)
+                    {
+                        anim.Play("Fall", -1, 0);
+                        _isRun = false;
+                    }
                     
                     //chay tren tuong
-                    /*if (IsLeft())
-                    {
-                        if (!wallRunLeft)
-                        {
-                            leoTuong = false;
-                            rig.velocity = Vector3.zero;
-                            //Debug.Log("Chay trai");
-                            anim.Play("WallRunLeft", -1, 0);
-                            wallRunLeft = true;
-                            //rig.isKinematic = true;
-                            rig.drag = 10;
-                            checkLonvong = false;
-                        }
-                        else
-                        {
-                            if (!checkAnimPlay("WallRunLeft"))
-                                anim.Play("WallRunLeft", -1, 0);
-                        }
-                    }
-                    else
-                    {
-                        if (wallRunLeft)
-                        {
-                            //Debug.Log("ket thuc chay trai");
-                            anim.Play("WallRunEndLeft", -1, 0);
-                            wallRunLeft = false;
-                            rig.isKinematic = false;
-                            rig.drag = 0;
-                            rig.AddForce(2f, 6, 0, ForceMode.Impulse);
-                        }
-                    }
-                    if (IsRight())
-                    {
-                        if (!wallRunRight)
-                        {
-                            leoTuong = false;
-                            rig.velocity = Vector3.zero;
-                            //Debug.Log("Chay phai");
-                            anim.Play("WallRunRight", -1, 0);
-                            wallRunRight = true;
-                            //rig.isKinematic = true;
-                            rig.drag = 10;
-                            checkLonvong = false;
-                        }
-                        else
-                        {
-                            if (!checkAnimPlay("WallRunRight"))
-                                anim.Play("WallRunRight", -1, 0);
-                        }
-                    }
-                    else
-                    {
-                        if (wallRunRight)
-                        {
-                            //Debug.Log("ket thuc chay phai");
-                            anim.Play("WallRunEndRight", -1, 0);
-                            wallRunRight = false;
-                            rig.isKinematic = false;
-                            rig.drag = 0;
-                            rig.AddForce(-2f, 6, 0, ForceMode.Impulse);
-                        }
-                    }*/
+                    
                 }
                 if (IsFrontUp() /*&& !wallRunRight*/)
                 {
@@ -482,7 +427,6 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 checkFirst = false;
                 transform.DOMoveY(transform.position.y + .51f, .1f).SetEase(Ease.InQuad);
                 transform.DOMoveZ(transform.position.z + .1f, .2f);
-
             }
         }
         
@@ -527,63 +471,6 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         //    ManagerEffect.Instance.EffectJump();
         //}
     }
-    /*void RaycastCheckLeft()
-    {
-        RaycastHit hit;
-        Vector3 direction = JumpLeft.position - originJump.position;
-        if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
-        {
-            //Debug.Log("nhay sat mep trai");
-            isAction = true;
-            anim.SetInteger(AnimParameter.jump, 1);
-            rig.velocity = Vector3.zero;
-            rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-            ManagerEffect.Instance.EffectJump();
-            ManagerEffect.Instance.OffMoveSmoke();
-            timeTemp = Time.time;
-            checkLonvong = true;
-        }
-        //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
-        //     new Vector3(capsuleCollider.bounds.min.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.center.z), capsuleCollider.radius / 3, layerGround))
-        //{
-        //    Debug.Log("nhay sat mep trai");
-        //    isAction = true;
-        //    anim.SetInteger(AnimParameter.jump, 1);
-        //    rig.velocity = Vector3.zero;
-        //    rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-        //    ManagerEffect.Instance.EffectJump();
-        //    ManagerEffect.Instance.OffMoveSmoke();
-        //}
-
-    }*/
-    /*void RaycastCheckRight()
-    {
-        RaycastHit hit;
-        Vector3 direction = JumpRight.position - originJump.position;
-        if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
-        {
-            //Debug.Log("nhay sat mep phai");
-            isAction = true;
-            anim.SetInteger(AnimParameter.jump, 2);
-            rig.velocity = Vector3.zero;
-            rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-            ManagerEffect.Instance.EffectJump();
-            ManagerEffect.Instance.OffMoveSmoke();
-            timeTemp = Time.time;
-            checkLonvong = true;
-        }
-        //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
-        //    new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.center.z), capsuleCollider.radius / 6, layerGround))
-        //{
-        //    Debug.Log("nhay sat mep phai");
-        //    isAction = true;
-        //    anim.SetInteger(AnimParameter.jump, 2);
-        //    rig.velocity = Vector3.zero;
-        //    rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-        //    ManagerEffect.Instance.EffectJump();
-        //    ManagerEffect.Instance.OffMoveSmoke();
-        //}
-    }*/
     bool checkWallRight()
     {
         Vector3 direction = checkRight.position - originJump.position;

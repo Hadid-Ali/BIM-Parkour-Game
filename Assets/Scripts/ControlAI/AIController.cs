@@ -485,7 +485,7 @@ public class AIController : MonoBehaviour
         batXa = true;
         //anim.SetInteger(AnimParameter.jump, Random.Range(1, 3));
         rig.velocity = Vector3.zero;
-        rig.AddForce(0, 8, 1, ForceMode.Impulse);
+        rig.AddForce(0, 4, 1, ForceMode.Impulse);
         ManagerEffect.Instance.OffMoveSmoke();
     }
     Vector3 posCheckPoint;

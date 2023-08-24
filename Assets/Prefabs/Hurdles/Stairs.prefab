@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7931069743953389087}
   - component: {fileID: 6195874682371320553}
   - component: {fileID: 5951390238585903870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs_Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1243981984146675338}
   - component: {fileID: 5845157486068484535}
   - component: {fileID: 1084172460619689895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,8 +178,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.000001, y: 2.2204463e-16, z: 10.000001}
-  m_Center: {x: -0.00000023841858, y: -0.0000076293945, z: 0}
+  m_Size: {x: 11.967304, y: 0, z: 11.236886}
+  m_Center: {x: -0.98365235, y: -0.0000076293945, z: -0.61844045}
 --- !u!1 &3404901189678097168
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 8569243233861952686}
   - component: {fileID: 7842001464469806914}
   - component: {fileID: 2931499224516534525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,8 +275,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.000001, y: 2.2204463e-16, z: 10.000001}
-  m_Center: {x: -0.00000023841858, y: -0.0000076293945, z: 0}
+  m_Size: {x: 11.969969, y: 0, z: 10.000001}
+  m_Center: {x: -0.9849899, y: -0.000007629403, z: 1.1011374e-14}
 --- !u!1 &6633987327111132751
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6294757944119962869}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 6633987327111132751}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.77, y: 1.543, z: 64.88}
-  m_LocalScale: {x: 1.4, y: 1, z: 1}
+  m_LocalScale: {x: 1.258, y: 0.68, z: 0.68}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7931069743953389087}
