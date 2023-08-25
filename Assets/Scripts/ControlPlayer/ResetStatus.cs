@@ -22,6 +22,7 @@ public class ResetStatus : MonoBehaviour
     {
         PlayerController.Instance._isSliding = false;
         PlayerController.Instance.isAction = false;
+        PlayerController.Instance.setdefaultSpeed();
         ManagerEffect.Instance.OnMoveSmoke();
     }
     private void ResetVuotRao()
@@ -46,7 +47,11 @@ public class ResetStatus : MonoBehaviour
     }    
     void Pause()
     {
-        PlayerController.Instance.rig.isKinematic = true;
+        if (PlayerController.Instance.IsGrounded())
+        {
+            PlayerController.Instance.rig.isKinematic = true;
+        }
+        
     }
     void ResetLeoTuong()
     {
@@ -71,5 +76,10 @@ public class ResetStatus : MonoBehaviour
     void EndSlide()
     {
         PlayerController.Instance._isSliding = false;
+    }
+
+    void reset()
+    {
+        PlayerController.Instance.rig.isKinematic = false;
     }
 }

@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Observer;
-using DG.Tweening;
-using Cinemachine;
 
 public class PlayerController : MonoBehaviourSingleton<PlayerController>
 {
@@ -68,6 +66,11 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         posCheckPoint = transform.position;
     }
 
+    public void setdefaultSpeed()
+    {
+        rig.isKinematic = false;
+        speed = defaultspeed;
+    }
     void setIdle()
     {
         anim.Play("Idle",-1,0);
@@ -521,10 +524,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void Run()
     {
+        rig.isKinematic = false;
         anim.Play("Run");
     }
     public void Slide()
     {
+        if (checkAnimPlay("WallClimbingEnd0"))
+        {
+            return;
+        }
         //if (!isAction)
         //{
         _isSliding = true;
@@ -539,6 +547,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     }
     public void Die()
     {
+        GameManager.Instance.touchManager.SetActive(false);
         checkLonvong = false;
         anim.Play("Die", -1, 0);
         rig.drag = 0;
@@ -670,6 +679,11 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     bool batXa;
     public void JumpAction() // high Jump Function
     {
+        if (checkAnimPlay("WallClimbingEnd0"))
+        {
+            return;
+        }
+        rig.isKinematic = false;
         // SoundManager.Instance.PlaySoundBatXa();
         //EatItemPower(0.5f);
         isAction = true;

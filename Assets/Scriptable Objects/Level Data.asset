@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   m_LevelPrefab:
-  - {fileID: 3706332920740010415, guid: 4d8bb908ffcbd2e469dc3f48c823c09a, type: 3}
-  - {fileID: 3706332920740010415, guid: b2b5af23ce22e514090ece70c0cba71a, type: 3}
   - {fileID: 983197601909440051, guid: 6b82488495b44694882e08a86e7e5b2d, type: 3}
   - {fileID: 616221391487299733, guid: cb2c7e775449fff4cadca95737b73f1c, type: 3}
   - {fileID: 4776087377325238610, guid: b8272caa2cc5f6048a5b99f7d4ac8475, type: 3}
@@ -26,3 +24,5 @@ MonoBehaviour:
   - {fileID: 379636485311223008, guid: b5c96de12c92fca40be6e54647922a9d, type: 3}
   - {fileID: 3706332920740010415, guid: 9688c81659a3e21489b97266299bb699, type: 3}
   - {fileID: 3706332920740010415, guid: d03b480d032ea9b4d8c42a6c7ee6f68e, type: 3}
+  - {fileID: 3706332920740010415, guid: b2b5af23ce22e514090ece70c0cba71a, type: 3}
+  - {fileID: 3706332920740010415, guid: 4d8bb908ffcbd2e469dc3f48c823c09a, type: 3}

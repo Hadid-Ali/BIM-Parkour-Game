@@ -360,7 +360,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
         {
             //nang cap bang video
             //neu load duoc video thi nang cap
-            if (IronSource.Agent.isRewardedVideoAvailable())
+            /*if (IronSource.Agent.isRewardedVideoAvailable())
             {
                 PlayerprefSave.SelectTypeVideo(TypeRewardVideo.speed);
                 IronSource.Agent.showRewardedVideo();
@@ -369,7 +369,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
             {
                 Debug.Log("video reward not available");
                 SoundManager.Instance.ShowNotification(canvasMain.transform);
-            }
+            }*/
             // SendEventFirebase.SendEvent_upgrade_speed(PlayerprefSave.levelSpeed, "ad");
         }
         else
@@ -398,7 +398,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
         {
             //nang cap bang video
             //neu load duoc video thi nang cap
-            if (IronSource.Agent.isRewardedVideoAvailable())
+            /*if (IronSource.Agent.isRewardedVideoAvailable())
             {
                 PlayerprefSave.SelectTypeVideo(TypeRewardVideo.booster);
                 IronSource.Agent.showRewardedVideo();
@@ -407,7 +407,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
             {
                 Debug.Log("video reward not available");
                 SoundManager.Instance.ShowNotification(canvasMain.transform);
-            }
+            }*/
             // SendEventFirebase.SendEvent_upgrade_booster(PlayerprefSave.levelBooster, "ad");
         }
         else

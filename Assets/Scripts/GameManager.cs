@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public List<DataEnemys> dataEnemies;
     public List<DataUpgrades> dataUpgrades;
     public int playerPos = 0;
-    [SerializeField] GameObject touchManager;
+    public GameObject touchManager;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             // SendEventFirebase.SendEvent_level_fail(PlayerprefSave.IdMap() + 1, ManagerEffect.Instance.top, totalCoinInLevel);
         }
         // load truoc quang cao
-        IronSource.Agent.loadInterstitial();
+        //IronSource.Agent.loadInterstitial();
     }
     public void EatCoin(int value)
     {

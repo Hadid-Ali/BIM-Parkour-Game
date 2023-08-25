@@ -21,6 +21,7 @@ public class PlayerSpeedHandler : MonoBehaviour
     void SetPlayerSpeed(float speed)
     {
         player.speed = speed;
+        player.defaultspeed = speed;
     }
 
     void SetPlayerAnimSpeed(float speed)
