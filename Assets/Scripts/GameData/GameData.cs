@@ -17,7 +17,7 @@ public class GameData : ScriptableObject
     public void ResetValue()
     {
         m_Coins = 100;
-        m_CurrentLevel = 12;
+        m_CurrentLevel = 29;
     }
 
     public int Level
