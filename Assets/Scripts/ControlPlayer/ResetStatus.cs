@@ -14,12 +14,15 @@ public class ResetStatus : MonoBehaviour
         //transform.parent.position = new Vector3(transform.parent.position.x, transform.GetChild(1).GetChild(0).position.y, transform.GetChild(1).GetChild(0).position.z);
         PlayerController.Instance.lockMove = false;
         PlayerController.Instance._isRun = true;
+        PlayerController.Instance.speed = PlayerController.Instance.defaultspeed;
         //TestCamera.Instance.lookAt = TestCamera.Instance.player;
         PlayerController.Instance.lockMove = false;
     }
     void EndAction()
     {
+        PlayerController.Instance._isSliding = false;
         PlayerController.Instance.isAction = false;
+        PlayerController.Instance.setdefaultSpeed();
         ManagerEffect.Instance.OnMoveSmoke();
     }
     private void ResetVuotRao()
@@ -32,7 +35,23 @@ public class ResetStatus : MonoBehaviour
     }
     void ResetJump()
     {
-        anim.SetInteger(AnimParameter.jump, 0);
+        // anim.SetInteger(AnimParameter.jump, 0);
+        
+        PlayerController.Instance.Run();
+
+    }
+
+    void StartRun()
+    {
+        PlayerController.Instance.rig.isKinematic = false;
+    }    
+    void Pause()
+    {
+        if (PlayerController.Instance.IsGrounded())
+        {
+            PlayerController.Instance.rig.isKinematic = true;
+        }
+        
     }
     void ResetLeoTuong()
     {
@@ -43,5 +62,24 @@ public class ResetStatus : MonoBehaviour
         PlayerController.Instance.checkFirst = true;
         PlayerController.Instance.lockMove = false;
         //Debug.Log("hanh dong");
+    }
+    void ClimbDie()
+    {
+        PlayerController.Instance.Die();
+    }
+
+    void Roll()
+    {
+        PlayerController.Instance.m_LandRoll = true;
+    }
+
+    void EndSlide()
+    {
+        PlayerController.Instance._isSliding = false;
+    }
+
+    void reset()
+    {
+        PlayerController.Instance.rig.isKinematic = false;
     }
 }

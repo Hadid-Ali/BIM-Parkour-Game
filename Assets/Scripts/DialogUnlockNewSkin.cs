@@ -31,7 +31,7 @@ public class DialogUnlockNewSkin : MonoBehaviour
     }
     public void btnViewAdsUnlockSkinClick()
     {
-        OnCompliteAdsSkin();
+        /*OnCompliteAdsSkin();
         if (IronSource.Agent.isRewardedVideoAvailable())
         {
             PlayerprefSave.SelectTypeVideo(TypeRewardVideo.unlockskin);
@@ -41,7 +41,7 @@ public class DialogUnlockNewSkin : MonoBehaviour
         {
             Debug.Log("video reward not available");
             SoundManager.Instance.ShowNotification(UIController.Instance.canvasNewSkin.transform.GetChild(0));
-        }
+        }*/
     }
 
     public void OnCompliteAdsSkin()

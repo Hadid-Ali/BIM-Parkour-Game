@@ -35,7 +35,7 @@ public class AIController : MonoBehaviour
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
         rig = GetComponent<Rigidbody>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(1).GetComponent<Animator>();
         EventDispatcher.Instance.RegisterListener(EventID.StartAI, (param) => StartGame());
         EventDispatcher.Instance.RegisterListener(EventID.PauseAI, (param) => PauseRun());
         EventDispatcher.Instance.RegisterListener(EventID.ContinueAI, (param) => ContinueRun());
@@ -290,7 +290,7 @@ public class AIController : MonoBehaviour
                         leoTuong = false;
                         _isRun = false;
                         checkFirst = false;
-                        transform.DOMoveY(transform.position.y + .12f, .2f);
+                        transform.DOMoveY(transform.position.y + .4f, .2f);
                         transform.DOMoveZ(transform.position.z + .02f, .2f);
                         //{
                         //    isAction = false;
@@ -422,7 +422,7 @@ public class AIController : MonoBehaviour
         leoTuong = false;
         anim.Play("Run");
     }
-    public void Win(Vector3 target)
+    public void Win()
     {
 
         isWin = true;
@@ -430,9 +430,7 @@ public class AIController : MonoBehaviour
         _isRun = false;
         _isLive = false;
         rig.isKinematic = true;
-        anim.SetTrigger(AnimParameter.jump);
-        Vector3 newTarget = new Vector3(target.x + Random.Range(-1.0f, 1.0f), target.y, target.z + Random.Range(-0.1f, -0.5f));
-        transform.DOJump(newTarget, 1, 1, 1f).SetEase(Ease.Linear).OnComplete(() => { anim.SetTrigger("win"); });
+        anim.SetTrigger("win");
     }
     int rd = 1;
     public void NhayVuotRao()
@@ -487,7 +485,7 @@ public class AIController : MonoBehaviour
         batXa = true;
         //anim.SetInteger(AnimParameter.jump, Random.Range(1, 3));
         rig.velocity = Vector3.zero;
-        rig.AddForce(0, 8, 1, ForceMode.Impulse);
+        rig.AddForce(0, 4, 1, ForceMode.Impulse);
         ManagerEffect.Instance.OffMoveSmoke();
     }
     Vector3 posCheckPoint;

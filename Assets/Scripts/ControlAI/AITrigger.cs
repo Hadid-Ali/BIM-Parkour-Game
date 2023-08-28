@@ -21,6 +21,8 @@ public class AITrigger : MonoBehaviour
             aIController.transform.position = new Vector3(aIController.transform.position.x, aIController.transform.position.y - 2, aIController.transform.position.z);
         }
     }
+
+    private bool reach = true;
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -37,7 +39,7 @@ public class AITrigger : MonoBehaviour
             case "climb":
                 aIController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                 break;
-            case "nhayxa":
+            case "Jump":
                 aIController.Nhayxa();
                 break;
             case "NhayVuotRao":
@@ -45,8 +47,12 @@ public class AITrigger : MonoBehaviour
                 break;
             case "Win":
                 gameObject.GetComponent<SetTopChart>().OffOder();
-                ManagerEffect.Instance.SetOnTop(gameObject, false);
-               aIController.Win(other.transform.GetChild(0).position);
+                GameManager.Instance.playerPos++;
+                if (reach)
+                {
+                    aIController.Win();
+                    reach = false;
+                }
                 break;
             case "checkPoint":
                 aIController.CheckPoint(other.transform.position);
@@ -61,7 +67,10 @@ public class AITrigger : MonoBehaviour
                 aIController.BatNhay();
                 break;
             case "jump":
-                aIController.Jump(5);
+                aIController.Jump(3);
+                break;
+            case "RoleOverHurdle":
+                aIController.BatNhay();
                 break;
         }
     }

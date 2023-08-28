@@ -23,6 +23,21 @@ TagManager:
   - Die2
   - rotatecam
   - camdefault
+  - RoleOverHurdle
+  - SlideHurdle
+  - LongRoll
+  - Slide
+  - PlayerUI
+  - Weapon
+  - Point
+  - MovementLines
+  - Interactable
+  - FreeClimb
+  - ClimbDirection
+  - Ladder
+  - LedgeLimit
+  - StartClimb
+  - EndClimb
   layers:
   - Default
   - TransparentFX

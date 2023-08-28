@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public int totalCoinInLevel;
     public List<DataEnemys> dataEnemies;
     public List<DataUpgrades> dataUpgrades;
+    public int playerPos = 0;
+    public GameObject touchManager;
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void GameStart()
     {
+        ActiveTouchManager(true);
         player.isKinematic = false;
         PlayerController.Instance.StartGame();
         UIController.Instance.GameStart();
@@ -30,18 +33,23 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         this.PostEvent(EventID.Spawn);
         // SendEventFirebase.SendEvent_level_start(PlayerprefSave.SetMap + 1);
     }
+
+    public void ActiveTouchManager(bool status)
+    {
+        touchManager.SetActive(status);
+    }
     public void GameOver()
     {
         UIController.Instance.slidePowerUp.SetActive(false);
         UIController.Instance.UiRuntime.SetActive(false);
         Invoke("Delay", 3f);
-        ManagerEffect.Instance.OffTrial();
+        //ManagerEffect.Instance.OffTrial();
     }
     void Delay()
     {
         UIController.Instance.vongSang.SetActive(true);
-        ManagerEffect.Instance.top1Effect.SetActive(false);
-        if (ManagerEffect.Instance.top == 1)
+        //ManagerEffect.Instance.top1Effect.SetActive(false);
+        if (playerPos == 1)
         {
             UIController.Instance.ShowWin();
             // SendEventFirebase.SendEvent_level_win(PlayerprefSave.IdMap() + 1,totalCoinInLevel);
@@ -52,10 +60,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             // SendEventFirebase.SendEvent_level_fail(PlayerprefSave.IdMap() + 1, ManagerEffect.Instance.top, totalCoinInLevel);
         }
         // load truoc quang cao
-        IronSource.Agent.loadInterstitial();
+        //IronSource.Agent.loadInterstitial();
     }
     public void EatCoin(int value)
     {
+        // print("ya chala");
         PlayerprefSave.Coin += value;
         totalCoinInLevel += value;
         UIController.Instance.ChangeTextCoin(PlayerprefSave.Coin);
@@ -74,7 +83,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void GetX5Coin()
     {
-        totalCoinInLevel *= 5;
+        totalCoinInLevel *= 2;
         PlayerprefSave.Coin += totalCoinInLevel;
     }
     public void AddDataEnemy(int level, float ai1, float ai2, float ai3, float ai4, float boss)

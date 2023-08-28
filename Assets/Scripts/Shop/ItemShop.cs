@@ -88,7 +88,7 @@ public class ItemShop : MonoBehaviour
     }
     public void ButtonVideo()
     {
-        ControlShop.Instance.objWatchVideo = gameObject;
+        /*ControlShop.Instance.objWatchVideo = gameObject;
         if (IronSource.Agent.isRewardedVideoAvailable())
         {
             PlayerprefSave.SelectTypeVideo(TypeRewardVideo.costume);
@@ -98,7 +98,7 @@ public class ItemShop : MonoBehaviour
         {
             Debug.Log("video reward not available");
             ControlShop.Instance.ShowThongBao();
-        }
+        }*/
     }
    
 }

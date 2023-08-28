@@ -9,6 +9,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
     public Transform posStarEat;
     public LayerMask layer;
     public Vector3[] posPath = new Vector3[5];
+    [SerializeField]private bool CheckSliding = false;
     #region OnCollision
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,10 +33,62 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         if (collision.gameObject.CompareTag("Die2"))
         {
             //TestCamera.Instance.CameraShake();
-            SoundManager.Instance.PlaySoundDie();
+            //SoundManager.Instance.PlaySoundDie();
             playerController.Die();
-            playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);
+            //playerController.transform.position = new Vector3(playerController.transform.position.x, playerController.transform.position.y - 2, playerController.transform.position.z);
         }
+
+        if (collision.gameObject.CompareTag("RoleOverHurdle"))
+        {
+            /*if (playerController.HitCount < 2)
+            {*/
+                //playerController.HitCount++;
+                playerController.anim.Play("HurdleJump", -1, 0);
+                playerController.rig.AddForce(new Vector3(0f, 3f, 0), ForceMode.Impulse);
+                //playerController.Run();
+            /*}*/
+            /*else
+            {
+                playerController.Die();
+                playerController.HitCount = 0;
+            }*/
+        }
+        if (collision.gameObject.CompareTag("LongRoll"))
+        {
+            if (playerController.HitCount < 2)
+            {
+                playerController.HitCount++;
+                playerController.anim.Play("LongRoll", -1, 0);
+                playerController.rig.AddForce(new Vector3(0f, 2f, 0), ForceMode.Impulse);
+                //playerController.Run();
+            }
+            else
+            {
+                playerController.Die();
+                playerController.HitCount = 0;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Slide"))
+        {
+            if (!checkAnimPlay("SlideLoop"))
+            {
+                playerController.anim.Play("SlideLoop", -1, 0);
+                CheckSliding = true;
+            }
+        }
+        else if (CheckSliding)
+        {
+            CheckSliding = false;
+            playerController.Run();
+        }
+
+        
+    }
+    
+    public bool checkAnimPlay(string nameAnim)
+    {
+        return playerController.anim.GetCurrentAnimatorStateInfo(0).IsName(nameAnim);
     }
 
     #endregion
@@ -44,6 +97,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
         RaycastStar();
     }
     #region OnTrigger
+    
     private void OnTriggerEnter(Collider other)
     {
         if (playerController._isLive)
@@ -55,7 +109,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 //        playerController.Die();
                 //    }
                 //    break;
-                case "slide":
+                /*case "slide":
                     if (!playerController._isPowerUp)
                         playerController.Slide();
                     else
@@ -65,11 +119,11 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         other.gameObject.SetActive(false);
                         ManagerEffect.Instance.ShowFxStar(other.transform.position);
                     }
-                    break;
+                    break;*/
                 case "climb":
                     playerController.Climb(other.gameObject.GetComponent<TypeWallClimb>().typeClimb);
                     break;
-                case "nhayxa":
+                /*case "nhayxa":
                     if (!playerController._isPowerUp)
                         playerController.Nhayxa();
                     else
@@ -80,8 +134,8 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         Vibration.Vibrate(15);
                     }
 
-                    break;
-                case "NhayVuotRao":
+                    break;*/
+                /*case "NhayVuotRao":
                     if (!playerController._isPowerUp)
                         playerController.NhayVuotRao();
                     else
@@ -91,17 +145,13 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                         ManagerEffect.Instance.ShowFxStar(other.transform.position);
                         Vibration.Vibrate(15);
                     }
-                    break;
+                    break;*/
                 case "Win":
                     gameObject.GetComponent<SetTopChart>().OffOder();
-                    ManagerEffect.Instance.SetOnTop(gameObject, true);
-                    posPath[0] = other.transform.GetChild(1).position;
-                    posPath[1] = other.transform.GetChild(2).position;
-                    posPath[2] = other.transform.GetChild(3).position;
-                    posPath[3] = other.transform.GetChild(4).position;
-                    posPath[4] = other.transform.GetChild(5).position;
-                    playerController.Win(other.transform.GetChild(0).position);
+                    GameManager.Instance.playerPos++;
+                    playerController.Win();
                     break;
+                
                 case "checkPoint":
                     playerController.CheckPoint(other.transform.position);
                     break;
@@ -110,17 +160,35 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 //    break;
                 case "coin":
                     //ManagerEffect.Instance.EffectTrigger(other.transform.GetChild(0).position);
-                    //GameManager.instance.EatCoin(10);
-                    //other.gameObject.SetActive(false);
+                    GameManager.instance.EatCoin(100);
+                    other.gameObject.SetActive(false);
                     break;
                 case "BatNhay":
-                    playerController.BatNhay();
+                    playerController.JumpAction();
                     break;
                 case "jump":
-                    playerController.Jump();
+                    playerController.Die();
                     break;
                 case "rotatecam":
                     TestCamera.Instance.ChangeRotateCamera();
+                    break;
+                /*case "EndClimb":
+                    playerController.ClimbEnd();
+                    break;*/
+                case "StartClimb":
+                    playerController.m_LandRoll = true;
+                    break;
+                case "slide":
+                    if (!playerController._isSliding)
+                    {
+                        playerController.Die();
+                    }
+                    break;
+                case "RoleOverHurdle":
+                    playerController.anim.Play("HurdleJump", -1, 0);
+                    playerController.speed /= 2f;
+                    playerController.isAction = true;
+                    //playerController.rig.AddForce(new Vector3(0f, 2.3f, 0), ForceMode.Impulse);
                     break;
             }
     }
@@ -140,7 +208,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
             hit.collider.transform.DOScale(.03f, 0.2f);
             hit.collider.transform.DOMove(posStarEat.position, .2f).OnComplete(() =>
             {
-                GameManager.instance.EatCoin(1);
+                //GameManager.instance.EatCoin(1);
                 ManagerEffect.Instance.EffectTrigger(hit.collider.gameObject.transform.position);
             });
             hit.collider.enabled = false;

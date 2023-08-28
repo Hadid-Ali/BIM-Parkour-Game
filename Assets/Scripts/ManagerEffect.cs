@@ -60,11 +60,11 @@ public class ManagerEffect : MonoBehaviourSingleton<ManagerEffect>
     }
     public void OnMoveSmoke()
     {
-        moveSmoke.SetActive(true);
+        //moveSmoke.SetActive(true);
     }
     public void OffMoveSmoke()
     {
-        moveSmoke.SetActive(false);
+        //moveSmoke.SetActive(false);
     }
     public void OffTrial()
     {

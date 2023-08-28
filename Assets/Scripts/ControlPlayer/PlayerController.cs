@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Observer;
-using Cinemachine;
 
 public class PlayerController : MonoBehaviourSingleton<PlayerController>
 {
@@ -11,8 +10,10 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public bool _isLive;
     public bool _isRun;
     public bool _isGround;
+    public bool _isSliding;
     public bool _isPowerUp;
     public float speed;
+    [SerializeField] private float m_JumpFoce = 2f;
     private float speedMoveX;
     private float heigh_Jump;
     private float speed_Booster;
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     Coroutine coroutinePower;
     [SerializeField] Material mat_player;
     public bool leoTuong;
-    private bool endLeoTuong;
+    public bool endLeoTuong;
     public bool wallRunLeft;
     public bool wallRunRight;
     [SerializeField] GameObject txtText;
@@ -50,9 +51,14 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     private bool checkLonvong;
     private bool reduceVelocity;
     private float tempReduce;
+    public float defaultspeed;
+
+    public int HitCount = 0;
     private void Start()
     {
-        BatNhay();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        defaultspeed = speed;
+        JumpAction();
         //Slide();
         setIdle();
         batXa = false;
@@ -60,6 +66,11 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         posCheckPoint = transform.position;
     }
 
+    public void setdefaultSpeed()
+    {
+        rig.isKinematic = false;
+        speed = defaultspeed;
+    }
     void setIdle()
     {
         anim.Play("Idle",-1,0);
@@ -82,15 +93,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     }
     public void StartGame()
     {
-        coroutinePower = StartCoroutine(UpValuePower());
+        // coroutinePower = StartCoroutine(UpValuePower());
         Run();
-        
+        checkFirst = true;
         _isGround = IsGrounded();
         _isRun = true;
     }
 
     #region Power Up
-    IEnumerator UpValuePower()
+    /*IEnumerator UpValuePower()
     {
         yield return new WaitForSeconds(2f);
         valuePowerUp += .1f;
@@ -108,8 +119,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             }
         }
         UIController.Instance.fillPower.DOFillAmount(valuePowerUp / maxPower, .2f).SetEase(Ease.Linear);
-    }
-    public void EatItemPower(float value)
+    }*/
+    /*public void EatItemPower(float value)
     {
         valuePowerUp += value;
         if (valuePowerUp >= maxPower)
@@ -127,8 +138,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             UIController.Instance.fillPower.DOFillAmount(valuePowerUp / maxPower, .2f).SetEase(Ease.Linear);
         }
 
-    }
-    public void UsePowerUp()
+    }*/
+    /*public void UsePowerUp()
     {
         if (!_isPowerUp)
             if (valuePowerUp > 0)
@@ -160,7 +171,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                     tempReduce = 0;
                 }
             }
-    }
+    }*/
     #endregion
     public bool IsGrounded()
     {
@@ -170,8 +181,29 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     //check truoc mat
     public bool IsFrontUp()
     {
-        return Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z),
+        /*turn Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z),
             new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.center.y, capsuleCollider.bounds.max.z), capsuleCollider.radius / 3, layerGround);
+    */
+        RaycastHit hit;
+        //print(Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, out hit, 0.09f, layerGround));
+        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, Color.red);
+        return Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector3.forward, out hit, 0.1f, layerGround);
+    }
+
+    public void CheckClimb()
+    {
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, capsuleCollider.radius / 3, layerGround))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.Log("Did not Hit");
+        }
     }
     //check truoc mat ben trai
     public bool IsFrontUpLeft()
@@ -182,6 +214,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     //check truoc mat ben phai
     public bool IsFrontUpRight()
     {
+        
         return Physics.CheckCapsule(new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.max.y, capsuleCollider.bounds.max.z),
             new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.max.y, capsuleCollider.bounds.max.z), capsuleCollider.radius, layerGround);
     }
@@ -263,6 +296,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             }
         }
     }
+
+    public bool m_LandRoll = false; 
     private void Update()
     {
         if (_isLive)
@@ -273,15 +308,23 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 {
                     if (checkFirst)
                     {
-                        if (batXa)
+                        if (m_LandRoll)
                         {
                             anim.Play("LandRoll", -1, 0);
+                            m_LandRoll = false;
+                        }
+                        
+                        if (batXa)
+                        {
+                            print("come here");
+                            
+                            
                             batXa = false;
                             tempPower -= 1f;
 //                            TestCamera.Instance.CameraShake();
                             checkFirst = false;
                             isAction = false;
-                            SoundManager.Instance.PlaySoundLonVongTiepDat();
+                            // SoundManager.Instance.PlaySoundLonVongTiepDat();
                         }
                         else
                         {
@@ -295,7 +338,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                                 if (Time.time - timeTemp > 1.3f)
                                 {
                                     anim.Play("LandRoll", -1, 0);
-                                    SoundManager.Instance.PlaySoundLonVongTiepDat();
+                                    //SoundManager.Instance.PlaySoundLonVongTiepDat();
                                 }
                                 else
                                     Run();
@@ -305,8 +348,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                                 Run();
                             }
                             checkLonvong = false;
-                            ManagerEffect.Instance.EffectTiepDat();
-                            ManagerEffect.Instance.OnMoveSmoke();
+                            /*ManagerEffect.Instance.EffectTiepDat();
+                            ManagerEffect.Instance.OnMoveSmoke();*/
                         }
                         wallRunLeft = false;
                         wallRunRight = false;
@@ -332,149 +375,39 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
                 else
                 {
                     checkFirst = true;
+
+                    if (!isAction)
+                    {
+                        anim.Play("Fall", -1, 0);
+                        _isRun = false;
+                    }
+                    
                     //chay tren tuong
-                    if (IsLeft())
-                    {
-                        if (!wallRunLeft)
-                        {
-                            leoTuong = false;
-                            rig.velocity = Vector3.zero;
-                            //Debug.Log("Chay trai");
-                            anim.Play("WallRunLeft", -1, 0);
-                            wallRunLeft = true;
-                            //rig.isKinematic = true;
-                            rig.drag = 10;
-                            checkLonvong = false;
-                        }
-                        else
-                        {
-                            if (!checkAnimPlay("WallRunLeft"))
-                                anim.Play("WallRunLeft", -1, 0);
-                        }
-                    }
-                    else
-                    {
-                        if (wallRunLeft)
-                        {
-                            //Debug.Log("ket thuc chay trai");
-                            anim.Play("WallRunEndLeft", -1, 0);
-                            wallRunLeft = false;
-                            rig.isKinematic = false;
-                            rig.drag = 0;
-                            rig.AddForce(2f, 6, 0, ForceMode.Impulse);
-                        }
-                    }
-                    if (IsRight())
-                    {
-                        if (!wallRunRight)
-                        {
-                            leoTuong = false;
-                            rig.velocity = Vector3.zero;
-                            //Debug.Log("Chay phai");
-                            anim.Play("WallRunRight", -1, 0);
-                            wallRunRight = true;
-                            //rig.isKinematic = true;
-                            rig.drag = 10;
-                            checkLonvong = false;
-                        }
-                        else
-                        {
-                            if (!checkAnimPlay("WallRunRight"))
-                                anim.Play("WallRunRight", -1, 0);
-                        }
-                    }
-                    else
-                    {
-                        if (wallRunRight)
-                        {
-                            //Debug.Log("ket thuc chay phai");
-                            anim.Play("WallRunEndRight", -1, 0);
-                            wallRunRight = false;
-                            rig.isKinematic = false;
-                            rig.drag = 0;
-                            rig.AddForce(-2f, 6, 0, ForceMode.Impulse);
-                        }
-                    }
+                    
                 }
                 if (IsFrontUp() /*&& !wallRunRight*/)
                 {
-                    rig.velocity = Vector3.zero;
-                    //Debug.Log("leo tuong");
-                    _isRun = false;
-                    leoTuong = true;
-                    endLeoTuong = false;
-                    rig.isKinematic = true;
-                    anim.Play("WallClimbing", -1, 0);
-                    isAction = true;
-                    wallRunLeft = false;
-                    wallRunRight = false;
-                    checkLonvong = false;
-                    if (batXa)
-                    {
-                        batXa = false;
-                        tempPower -= 1f;
-                    }
-                    if (reduceVelocity)
-                        rig.drag = 0;
+                    StartClimbing();
                 }
+
+                //CheckClimb();
             }
             else
             {
                 if (!endLeoTuong)
                 {
+                    
                     if (!_isPowerUp)
                         transform.Translate(Vector3.up * speedLeoTuong * Time.deltaTime);
-                    else
-                        transform.Translate(Vector3.up * speedLeoTuong * 2 * Time.deltaTime);
+
                     if (!checkAnimPlay("WallClimbing"))
                     {
                         anim.Play("WallClimbing", -1, 0);
                     }
                 }
-                if (!IsFrontUpLeft() && IsFrontUpRight())
-                {
-                    //Debug.Log("leo len nhay trai");
-                    leoTuong = false;
-                    endLeoTuong = true;
-                    _isRun = true;
-                    rig.isKinematic = false;
-                    isAction = false;
-                    anim.SetInteger(AnimParameter.jump, 1);
-                    rig.AddForce(-1f, 5, 0, ForceMode.Impulse);
-                }
-                else
-                if (!IsFrontUpRight() && IsFrontUpLeft())
-                {
-                    //Debug.Log("leo len nhay phai");
-                    leoTuong = false;
-                    endLeoTuong = true;
-                    _isRun = true;
-                    rig.isKinematic = false;
-                    isAction = false;
-                    anim.SetInteger(AnimParameter.jump, 1);
-                    rig.AddForce(1f, 5, 0, ForceMode.Impulse);
-                }
-                else if (!IsFrontUpLeft() && !IsFrontUpRight())
-                {
-                    if (!checkAnimPlay("WallClimbingEnd"))
-                    {
-                        lockMove = true;
-                        anim.Play("WallClimbingEnd", -1, 0);
-                        //leoTuong = false;
-                        endLeoTuong = true;
-                        _isRun = false;
-                        checkFirst = false;
-                        transform.DOMoveY(transform.position.y + .12f, .2f);
-                        transform.DOMoveZ(transform.position.z + .02f, .2f);
-                        //{
-                        //    isAction = false;
-                        //    _isRun = true;
-                        //    rig.isKinematic = false;
-                        //    leoTuong = false;
-                        //    checkFirst = false;
-                        //});
-                    }
-                }
+
+                ClimbEnd();
+
             }
         }
         if (rig.velocity.y < -4f)
@@ -483,6 +416,47 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public bool checkFirst;
     public bool isAction;
 
+    public void ClimbEnd()
+    {
+        if (!IsFrontUp())
+        {
+            if (!checkAnimPlay("WallClimbingEnd0")/* && !checkAnimPlay("WallClimbingEnd0")*/)
+            {
+                lockMove = true;
+                anim.Play("WallClimbingEnd0", -1, 0);
+                //leoTuong = false;
+                endLeoTuong = true;
+                _isRun = false;
+                checkFirst = false;
+                transform.DOMoveY(transform.position.y + .51f, .1f).SetEase(Ease.InQuad);
+                transform.DOMoveZ(transform.position.z + .1f, .2f);
+            }
+        }
+        
+    }
+
+    void StartClimbing()
+    {
+        rig.velocity = Vector3.zero;
+        //Debug.Log("leo tuong");
+        _isRun = false;
+        leoTuong = true;
+        endLeoTuong = false;
+        rig.isKinematic = true;
+        anim.Play("WallClimbing", -1, 0);
+        isAction = true;
+        wallRunLeft = false;
+        wallRunRight = false;
+        checkLonvong = false;
+        if (batXa)
+        {
+            batXa = false;
+            tempPower -= 1f;
+        }
+        if (reduceVelocity)
+            rig.drag = 0;
+    }
+    
     void CheckIsJump()
     {
         RaycastHit hit;
@@ -490,71 +464,14 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
         {
             //Debug.Log("Jump");
-            Jump();
-            ManagerEffect.Instance.EffectJump();
+            //Jump();
+            //ManagerEffect.Instance.EffectJump();
         }
         //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
         //     new Vector3(capsuleCollider.bounds.center.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.max.z), capsuleCollider.radius, layerGround))
         //{
         //    Jump();
         //    ManagerEffect.Instance.EffectJump();
-        //}
-    }
-    void RaycastCheckLeft()
-    {
-        RaycastHit hit;
-        Vector3 direction = JumpLeft.position - originJump.position;
-        if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
-        {
-            //Debug.Log("nhay sat mep trai");
-            isAction = true;
-            anim.SetInteger(AnimParameter.jump, 1);
-            rig.velocity = Vector3.zero;
-            rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-            ManagerEffect.Instance.EffectJump();
-            ManagerEffect.Instance.OffMoveSmoke();
-            timeTemp = Time.time;
-            checkLonvong = true;
-        }
-        //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
-        //     new Vector3(capsuleCollider.bounds.min.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.center.z), capsuleCollider.radius / 3, layerGround))
-        //{
-        //    Debug.Log("nhay sat mep trai");
-        //    isAction = true;
-        //    anim.SetInteger(AnimParameter.jump, 1);
-        //    rig.velocity = Vector3.zero;
-        //    rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-        //    ManagerEffect.Instance.EffectJump();
-        //    ManagerEffect.Instance.OffMoveSmoke();
-        //}
-
-    }
-    void RaycastCheckRight()
-    {
-        RaycastHit hit;
-        Vector3 direction = JumpRight.position - originJump.position;
-        if (!Physics.Raycast(originJump.position, direction, out hit, distanceJump, layerGround))
-        {
-            //Debug.Log("nhay sat mep phai");
-            isAction = true;
-            anim.SetInteger(AnimParameter.jump, 2);
-            rig.velocity = Vector3.zero;
-            rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-            ManagerEffect.Instance.EffectJump();
-            ManagerEffect.Instance.OffMoveSmoke();
-            timeTemp = Time.time;
-            checkLonvong = true;
-        }
-        //if (!Physics.CheckCapsule(capsuleCollider.bounds.min,
-        //    new Vector3(capsuleCollider.bounds.max.x, capsuleCollider.bounds.min.y, capsuleCollider.bounds.center.z), capsuleCollider.radius / 6, layerGround))
-        //{
-        //    Debug.Log("nhay sat mep phai");
-        //    isAction = true;
-        //    anim.SetInteger(AnimParameter.jump, 2);
-        //    rig.velocity = Vector3.zero;
-        //    rig.AddForce(0f, heigh_Jump, 0, ForceMode.Impulse);
-        //    ManagerEffect.Instance.EffectJump();
-        //    ManagerEffect.Instance.OffMoveSmoke();
         //}
     }
     bool checkWallRight()
@@ -589,7 +506,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
             rig.AddForce(0, heigh_Jump, 0, ForceMode.Impulse);
             ManagerEffect.Instance.OffMoveSmoke();
             timeTemp = Time.time;
-            checkLonvong = true;
+            //checkLonvong = true;
         }
     }
     public void Climb(int idType)
@@ -607,23 +524,30 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void Run()
     {
+        rig.isKinematic = false;
         anim.Play("Run");
     }
     public void Slide()
     {
+        if (checkAnimPlay("WallClimbingEnd0"))
+        {
+            return;
+        }
         //if (!isAction)
         //{
-        SoundManager.Instance.PlaySoundSlide();
-        EatItemPower(0.5f);
+        _isSliding = true;
+        // SoundManager.Instance.PlaySoundSlide();
+        //EatItemPower(0.5f);
         isAction = true;
         anim.SetTrigger(AnimParameter.slide);
-        ManagerEffect.Instance.OffMoveSmoke();
+        /*ManagerEffect.Instance.OffMoveSmoke();
         ManagerEffect.Instance.ShowFxSongAm(transform.position);
-        ManagerEffect.Instance.EffectJump2();
+        ManagerEffect.Instance.EffectJump2();*/
         //}
     }
     public void Die()
     {
+        GameManager.Instance.touchManager.SetActive(false);
         checkLonvong = false;
         anim.Play("Die", -1, 0);
         rig.drag = 0;
@@ -635,7 +559,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         _isLive = false;
         //anim.SetInteger(AnimParameter.wallclimb, 0);
         //this.PostEvent(EventID.PauseAI);
-        Invoke("DelayReSpawn", 1f);
+        //Invoke("DelayReSpawn", 1f);
+        Lose();
     }
     void DelayReSpawn()
     {
@@ -665,43 +590,51 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         SoundManager.Instance.PlaySoundHoiSinh();
     }
     public bool isWin;
-    public void Win(Vector3 target)
+
+    public void Win()
     {
         rig.isKinematic = true;
         _isRun = false;
         _isLive = false;
         isWin = true;
         lockMove = true;
-        Jump();
-        txtText.SetActive(false);
-        this.PostEvent(EventID.OffText);
-        this.PostEvent(EventID.PauseAI);
-        Invoke("DelaySlow", 2.4f);
-        GameManager.instance.GameOver();
-        ManagerEffect.Instance.OffMoveSmoke();
-        transform.DOJump(target, 0.5f, 1, 1f).SetEase(Ease.Linear).OnComplete(() =>
-        {
 
-            //TestCamera.Instance.camWin();
-            TestCamera.Instance.DontCameraFollow();
-            //Camera.main.GetComponent<CinemachineBrain>().enabled = false;
-            Camera.main.transform.DORotate(new Vector3(12, -180, 0), 1.5f).SetEase(Ease.Linear);
-            Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
-            if (ManagerEffect.Instance.top == 1)
-            {
-                anim.SetTrigger("win");
-            }
+        Invoke("DelaySlow", 2.4f);
+
+        GameManager.instance.GameOver();
+        TestCamera.Instance.camWin();
+        transform.DORotate(new Vector3(0, 90, 0), 0.3f);
+        //Camera.main.transform.DORotate(new Vector3(12, -120, 0), 2f).SetEase(Ease.InQuad);
+        //Camera.main.transform.DOPath(PlayerTrigger.Instance.posPath, 2f, PathType.CatmullRom);
+        if (GameManager.Instance.playerPos == 1)
+        {
+            anim.SetTrigger("win");
+        }
+        else
+        {
+            if (Random.Range(0, 2) == 0)
+                anim.Play("lose1", -1, 0);
             else
-            {
-                if (Random.Range(0, 2) == 0)
-                    anim.Play("lose1", -1, 0);
-                else
-                    anim.Play("lose2", -1, 0);
-            }
-        });
+                anim.Play("lose2", -1, 0);
+        }
+
+        /*});*/
         checkLonvong = false;
         UIController.Instance.btnPowerUp.gameObject.SetActive(false);
     }
+    
+    public void Lose()
+    {
+        rig.isKinematic = true;
+        _isRun = false;
+        _isLive = false;
+        isWin = true;
+        lockMove = true;
+
+        checkLonvong = false;
+        UIController.Instance.LosingPanel();
+    }
+
     void DelaySlow()
     {
         SlowMotion.Instance.SlowNoAudio(2f, .3f);
@@ -711,7 +644,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         SoundManager.Instance.PlaySoundNhay();
         isAction = true;
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         anim.SetInteger(AnimParameter.vuotrao, 1);
         rig.velocity = Vector3.zero;
         rig.AddForce(new Vector3(0f, heigh_Jump, 0), ForceMode.Impulse);
@@ -730,7 +663,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         ManagerEffect.Instance.EffectJump2();
         ManagerEffect.Instance.EffectJump();
         SoundManager.Instance.PlaySoundNhay();
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         isAction = true;
         anim.SetTrigger(AnimParameter.nhayxa);
         rig.velocity = Vector3.zero;
@@ -744,20 +677,30 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         }
     }
     bool batXa;
-    public void BatNhay() // high Jump Function
+    public void JumpAction() // high Jump Function
     {
+        if (checkAnimPlay("WallClimbingEnd0"))
+        {
+            return;
+        }
+        rig.isKinematic = false;
         // SoundManager.Instance.PlaySoundBatXa();
-        EatItemPower(0.5f);
+        //EatItemPower(0.5f);
         isAction = true;
         // checkFirst = true;
-        if (Random.Range(0, 2) == 0)
+        int i = Random.Range(0, 3);
+        if (i == 0)
             anim.Play("JumpRoll", -1, 0);
-        else
+        else if(i == 1)
             anim.Play("JumpRoll2", -1, 0);
+        else
+        {
+            anim.Play("JumpRoll3", -1, 0);
+        }
         batXa = true;
         rig.velocity = Vector3.zero;
         tempPower += 1f;
-        rig.AddForce(0, 4, 0, ForceMode.Impulse);
+        rig.AddForce(1, m_JumpFoce, 0, ForceMode.Impulse);
         // ManagerEffect.Instance.OffMoveSmoke();
         // ManagerEffect.Instance.ShowFxBatXa();
         // ManagerEffect.Instance.ShowFxSongAm(transform.position);

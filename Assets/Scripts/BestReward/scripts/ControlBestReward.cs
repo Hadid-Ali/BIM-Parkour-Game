@@ -92,20 +92,7 @@ public class ControlBestReward : MonoBehaviour
 
     public void btnViewVideoKeyClick()
     {
-#if UNITY_EDITOR
-        OnCompliteVideo();
-#elif !UNITY_EDITOR
-        if (IronSource.Agent.isRewardedVideoAvailable())
-        {
-            PlayerprefSave.SelectTypeVideo(TypeRewardVideo.rewardKey);
-            IronSource.Agent.showRewardedVideo();
-        }
-        else
-        {
-            Debug.Log("video reward not available");
-            ShowThongBao();
-        }
-#endif
+
     }
 
     public void btnCloseClick()

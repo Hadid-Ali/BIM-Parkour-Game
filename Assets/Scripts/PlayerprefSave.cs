@@ -6,8 +6,12 @@ public static class PlayerprefSave
 {
     public static int Coin
     {
-        set { PlayerPrefs.SetInt("coin", value); }
-        get { return PlayerPrefs.GetInt("coin"); }
+        set
+        {
+            SaveLoadData.m_data.Coins = value;
+            SaveLoadData.SaveData();
+        }
+        get { return SaveLoadData.m_data.Coins; }
     }
     public static int CurrentCostume
     {
@@ -19,8 +23,9 @@ public static class PlayerprefSave
     /// </summary>
     public static int SetMap
     {
-        set { PlayerPrefs.SetInt("mapcurrent", value); }
-        get { return PlayerPrefs.GetInt("mapcurrent"); }
+        set { SaveLoadData.m_data.Level = value;
+            SaveLoadData.SaveData(); }
+        get { return SaveLoadData.m_data.Level; }
     }
     /// <summary>
     /// level speed
