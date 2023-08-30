@@ -10,8 +10,11 @@ public class LoadingScripts : MonoBehaviour
     [SerializeField] private string m_LoadScene;
     void Start()
     {
+        
         StartCoroutine(LoadYourAsyncScene());
         PlayerprefSave.FirstOpenGame();
+        
+        AdHandler.InitializeAds();
     }
 
     IEnumerator LoadYourAsyncScene()

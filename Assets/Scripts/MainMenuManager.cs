@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        AdHandler.ShowBanner();
         m_CoinText.text = SaveLoadData.m_data.Coins.ToString();
         m_PlayBtn.onClick.AddListener(PlayBtn);
     }

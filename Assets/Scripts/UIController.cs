@@ -80,6 +80,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
 
     public void restartGame()
     {
+        AdHandler.HideRectBanner();
+
         SceneManager.LoadScene("LoadingLevel");
     }
 
@@ -212,6 +214,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     void DelayLosingPanel()
     {
         LosePanel.SetActive(true);
+        AdHandler.ShowInterstitial();
     }
     
     [Header("Key open box reward")]
@@ -465,6 +468,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void btnNextmap()
     {
+        AdHandler.HideRectBanner();
+
         SceneManager.LoadScene("LevelSelection");
         /*if (PlayerprefSave.IdMap() < RandomMapController.Instance.listBlockLevels.Count - 1)
         {
@@ -490,18 +495,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void BtnGetX5Coin()
     {
-        RecievedX5Coin();
-
-        /*if (IronSource.Agent.isRewardedVideoAvailable())
-        {
-            PlayerprefSave.SelectTypeVideo(TypeRewardVideo.x5);
-            IronSource.Agent.showRewardedVideo();
-        }
-        else
-        {
-            Debug.Log("video reward not available");
-            SoundManager.Instance.ShowNotification(canvasMain.transform);
-        }*/
+        AdHandler.ShowRewarded(RecievedX5Coin);
     }
     public void RecievedX5Coin()
     {

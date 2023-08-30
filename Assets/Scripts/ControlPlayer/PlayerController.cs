@@ -632,12 +632,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         lockMove = true;
 
         checkLonvong = false;
+        
         UIController.Instance.LosingPanel();
     }
 
     void DelaySlow()
     {
         SlowMotion.Instance.SlowNoAudio(2f, .3f);
+        AdHandler.ShowInterstitial();
+        AdHandler.ShowRectBanner();
         blackScreenCamera.SetActive(true);
     }
     public void NhayVuotRao()
