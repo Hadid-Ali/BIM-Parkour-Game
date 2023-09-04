@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "266193533581",
+    "project_id": "virtua-play-android",
+    "storage_bucket": "virtua-play-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266193533581:android:06ac83a579e45a8cc5c0c4",
+        "android_client_info": {
+          "package_name": "com.virtua.play.ice.hockey.goalkeeper.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266193533581-p7iafm9qpagt8t3f6gub84ig9sos74kc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCraAWmDpxuRt50l39SGyIG8EvaoDC4IKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266193533581-p7iafm9qpagt8t3f6gub84ig9sos74kc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266193533581:android:d4b3997aaaa468acc5c0c4",
+        "android_client_info": {
+          "package_name": "com.virtua.play.parkour.jungle.runner.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266193533581-p7iafm9qpagt8t3f6gub84ig9sos74kc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCraAWmDpxuRt50l39SGyIG8EvaoDC4IKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266193533581-p7iafm9qpagt8t3f6gub84ig9sos74kc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

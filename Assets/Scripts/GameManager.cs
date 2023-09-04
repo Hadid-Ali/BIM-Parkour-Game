@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         UIController.Instance.GameStart();
         this.PostEvent(EventID.StartAI);
         this.PostEvent(EventID.Spawn);
+        FirebaseEvents.logEvent("Level Start " + (LevelSelection.m_LevelNum+1));
+
         // SendEventFirebase.SendEvent_level_start(PlayerprefSave.SetMap + 1);
     }
 

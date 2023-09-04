@@ -1,0 +1,944 @@
+fileFormatVersion: 2
+guid: cf09b6b81ddd8ad46acb671492ec3dda
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: girl_modern_lambert2
+    second: {fileID: 2100000, guid: 220fa11251ad57e41aa3a84e89bfb993, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: girl_modern_lambert3
+    second: {fileID: 2100000, guid: f2a7f36a532df88458373b994b80c7b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: girl_modern_lambert4
+    second: {fileID: 2100000, guid: 8cbf15ea7fc70174a9ed02389ac73a02, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: mixamorig:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Girl Rig(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      parentName: Girl Rig(Clone)
+      position: {x: -0.00001947999, y: 0.009358195, z: 0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface1
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface2
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface3
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface4
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface5
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface6
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface7
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface8
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface9
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface10
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface11
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface12
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface13
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface14
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface15
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface16
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface17
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface18
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface19
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface20
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface21
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface22
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface23
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface24
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface25
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface26
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface27
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface28
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface29
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface30
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface31
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface32
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface33
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface34
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface35
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface36
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface37
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface38
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface39
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface40
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface41
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface42
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface43
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface44
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface45
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface46
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface47
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface48
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface49
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface50
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface51
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface52
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface53
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface54
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface55
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface56
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface57
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface58
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface59
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface60
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface61
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface62
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface63
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface64
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface65
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface66
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface67
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface68
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface69
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface70
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface71
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface72
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface73
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface74
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface75
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface76
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface77
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface78
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface79
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface80
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface81
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface82
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface83
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: girl_modern:model:_PhongSpecularColor_3__PhongSpecularColor_5_3__PhongSpecularCol1
+      position: {x: 0.00001947999, y: -0.009358195, z: -0.00013310499}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Girl_Main
+      parentName: Girl Rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 550, y: 550, z: 550}
+    - name: mixamorig:Hips
+      parentName: Girl_Main
+      position: {x: -0.00000000626814, y: 0.0115834735, z: -0.0000643394}
+      rotation: {x: 0.000000014693411, y: -0.00000020137331, z: 0.000006565017, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftUpLeg
+      parentName: mixamorig:Hips
+      position: {x: -0.0011172746, y: -0.0004794049, z: 0.000055152566}
+      rotation: {x: 0.00062299357, y: -0.015063139, z: 0.99988484, w: -0.001738904}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftLeg
+      parentName: mixamorig:LeftUpLeg
+      position: {x: -9.891877e-12, y: 0.0049874145, z: 1.1252767e-12}
+      rotation: {x: -0.0008354791, y: 0.000032064545, z: -0.0034689868, w: 0.9999936}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftFoot
+      parentName: mixamorig:LeftLeg
+      position: {x: -1.6638278e-11, y: 0.0049920827, z: 1.1614806e-14}
+      rotation: {x: 0.4476361, y: -0.054269977, z: -0.027945815, w: 0.8921299}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftToeBase
+      parentName: mixamorig:LeftFoot
+      position: {x: -1.3754756e-12, y: 0.0017309976, z: -1.1596264e-11}
+      rotation: {x: 0.32077137, y: 0.09067102, z: -0.030865563, w: 0.94230133}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftToe_End
+      parentName: mixamorig:LeftToeBase
+      position: {x: -1.0690301e-12, y: 0.00065076083, z: 1.8551142e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Spine
+      parentName: mixamorig:Hips
+      position: {x: -0, y: 0.00086215016, z: -0.000055868306}
+      rotation: {x: -0.03234971, y: 0.00000041363862, z: -0.0000065550676, w: 0.9994766}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Spine1
+      parentName: mixamorig:Spine
+      position: {x: -0, y: 0.0010079512, z: -2.7111737e-12}
+      rotation: {x: 2.7323744e-18, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Spine2
+      parentName: mixamorig:Spine1
+      position: {x: -0, y: 0.001151945, z: 5.897662e-12}
+      rotation: {x: -9.389671e-26, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightShoulder
+      parentName: mixamorig:Spine2
+      position: {x: 0.0005133708, y: 0.0011382313, z: -0.000010069216}
+      rotation: {x: -0.5342425, y: -0.46123528, z: 0.5407322, w: -0.45766324}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightArm
+      parentName: mixamorig:RightShoulder
+      position: {x: -6.7683294e-13, y: 0.001075691, z: -1.0001453e-11}
+      rotation: {x: -0.07808213, y: 0.012747581, z: 0.0041469405, w: 0.9968568}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightForeArm
+      parentName: mixamorig:RightArm
+      position: {x: 1.927774e-12, y: 0.0025511694, z: 1.7030658e-11}
+      rotation: {x: 0.0000000856178, y: -0.005133767, z: 0.00000014910962, w: 0.9999868}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightHand
+      parentName: mixamorig:RightForeArm
+      position: {x: 2.164149e-11, y: 0.002690244, z: -1.02525766e-11}
+      rotation: {x: 0.00000016888828, y: 0.0026513732, z: 0.00000021401422, w: 0.9999965}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightHandIndex1
+      parentName: mixamorig:RightHand
+      position: {x: -3.4480606e-12, y: 0.00080934836, z: 4.4661427e-12}
+      rotation: {x: -0.0000000094251265, y: 0.017895767, z: -0.00000014275692, w: 0.9998399}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightHandIndex2
+      parentName: mixamorig:RightHandIndex1
+      position: {x: -1.6727979e-13, y: 0.0001073669, z: -3.1987633e-12}
+      rotation: {x: -0.25643805, y: -0.00000000456108, z: -0.06973329, w: 0.96404195}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightHandIndex3
+      parentName: mixamorig:RightHandIndex2
+      position: {x: -0.000031410626, y: 0.00019836315, z: 0.00011425366}
+      rotation: {x: -0.20236054, y: 0.006246673, z: -0.065877385, w: 0.9770729}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightHandIndex4
+      parentName: mixamorig:RightHandIndex3
+      position: {x: -0.00003653423, y: 0.00008765511, z: 0.00012238209}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftShoulder
+      parentName: mixamorig:Spine2
+      position: {x: -0.0005133708, y: 0.0011382507, z: -0.000010368661}
+      rotation: {x: 0.534057, y: -0.46135744, z: 0.5408945, w: 0.45756477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftArm
+      parentName: mixamorig:LeftShoulder
+      position: {x: 6.7944364e-13, y: 0.001075691, z: -1.0001278e-11}
+      rotation: {x: -0.07806488, y: -0.012400175, z: -0.004463873, w: 0.9968612}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftForeArm
+      parentName: mixamorig:LeftArm
+      position: {x: 1.9804213e-12, y: 0.002551158, z: -3.5674626e-11}
+      rotation: {x: 0.00000030410118, y: 0.005091697, z: 0.00000016078073, w: 0.99998707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftHand
+      parentName: mixamorig:LeftForeArm
+      position: {x: 6.347256e-12, y: 0.0026883823, z: -5.85086e-11}
+      rotation: {x: -0.00000014839802, y: 0.004041035, z: -0.0000003320499, w: 0.99999183}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftHandIndex1
+      parentName: mixamorig:LeftHand
+      position: {x: -1.7794726e-11, y: 0.0010774067, z: -1.4239534e-11}
+      rotation: {x: 0.00000018058459, y: -0.0060413647, z: 0.00000020530408, w: 0.99998176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftHandIndex2
+      parentName: mixamorig:LeftHandIndex1
+      position: {x: 2.876277e-12, y: 0.00007115733, z: -3.32947e-13}
+      rotation: {x: -0.049160518, y: 0.000000082207315, z: -0.09340486, w: 0.9944138}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftHandIndex3
+      parentName: mixamorig:LeftHandIndex2
+      position: {x: -0.000018987743, y: 0.000099633566, z: 0.000010139982}
+      rotation: {x: -0.15470237, y: -0.019970633, z: -0.09422784, w: 0.98325455}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftHandIndex4
+      parentName: mixamorig:LeftHandIndex3
+      position: {x: -0.000030532738, y: 0.00007523247, z: 0.000035197972}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Neck
+      parentName: mixamorig:Spine2
+      position: {x: -0, y: 0.0012959365, z: -7.612581e-11}
+      rotation: {x: 0.03234968, y: 3.5255144e-14, z: 2.2863384e-13, w: 0.9994766}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Head
+      parentName: mixamorig:Neck
+      position: {x: -0, y: 0.00060644624, z: 0.000091282614}
+      rotation: {x: -6.938894e-18, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:HeadTop_End
+      parentName: mixamorig:Head
+      position: {x: -0, y: 0.0021938288, z: 0.00033021625}
+      rotation: {x: -6.938894e-18, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightUpLeg
+      parentName: mixamorig:Hips
+      position: {x: 0.0011172746, y: -0.0004794049, z: 0.000050144474}
+      rotation: {x: -0.0004405541, y: -0.012745711, z: 0.99991715, w: 0.0017481752}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightLeg
+      parentName: mixamorig:RightUpLeg
+      position: {x: -5.334866e-12, y: 0.0049871984, z: -8.6046513e-13}
+      rotation: {x: -0.0049675927, y: -0.000045109067, z: 0.003465693, w: 0.99998164}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightFoot
+      parentName: mixamorig:RightLeg
+      position: {x: 9.709358e-12, y: 0.0049918983, z: 1.0217008e-12}
+      rotation: {x: 0.4445442, y: 0.055130173, z: 0.027965298, w: 0.8936213}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightToeBase
+      parentName: mixamorig:RightFoot
+      position: {x: -1.7234439e-12, y: 0.0017085066, z: 1.40898525e-11}
+      rotation: {x: 0.3255864, y: -0.091188066, z: 0.03156533, w: 0.9405753}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightToe_End
+      parentName: mixamorig:RightToeBase
+      position: {x: 1.9418642e-12, y: 0.0006412386, z: 2.5179224e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -625,6 +625,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     
     public void Lose()
     {
+        FirebaseEvents.logEvent("Level Fail " + (LevelSelection.m_LevelNum+1));
         rig.isKinematic = true;
         _isRun = false;
         _isLive = false;

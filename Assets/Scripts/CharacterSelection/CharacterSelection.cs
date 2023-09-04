@@ -2,11 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterSelection : MonoBehaviour
 {
+    [Header("UI Buttons")] 
+    [SerializeField] private Button Left;
+    [SerializeField] private Button Right;
+    [SerializeField] private Button Buy;
+    [SerializeField] private Button Select;
+
+    [Header("UI Text")] 
+    [SerializeField] private TextMeshProUGUI BuyPrice;
+    [SerializeField] private TextMeshProUGUI SelectBtnText;
+    
+    
     private List<GameObject> m_Characters = new List<GameObject>();
     private List<CharacterData> m_Characters1 = new List<CharacterData>();
+    [Header("Character data")] 
     [SerializeField] private List<CharacterNames> m_CharactersName;
     private int CurrentCharacter = 0;
 
@@ -24,6 +38,10 @@ public class CharacterSelection : MonoBehaviour
 
     private void Start()
     {
+        Left.onClick.AddListener(LeftBtnPress);
+        Right.onClick.AddListener(RightBtnPress);
+        // Buy.onClick.AddListener();
+        // SelectBtnText.onClick.AddListener();
         GetCharacterData();
     }
 
@@ -40,7 +58,7 @@ public class CharacterSelection : MonoBehaviour
 
     void SpawnCharacter(int i)
     {
-        m_Characters.Add(Instantiate(m_Characters1[i].CharacterPrefab, transform));
+        m_Characters.Add(Instantiate(m_Characters1[i].CharacterPrefab));
     }
 
     public void LeftBtnPress()

@@ -25,7 +25,7 @@ public class LoadingScripts : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_LoadScene);
         yield return new WaitForSeconds(.5f);
-        fillAmount.fillAmount = .8f;
+        fillAmount.fillAmount = .9f;
         while (!asyncLoad.isDone)
         {
             fillAmount.fillAmount = 1;
