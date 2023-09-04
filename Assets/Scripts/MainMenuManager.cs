@@ -12,10 +12,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button m_PlayBtn;
     [SerializeField] private Button m_Store;
     [SerializeField] private Button m_Setting;
-    [SerializeField] private Button m_Exit;
 
     void Start()
     {
+        AdHandler.ShowBanner();
         m_CoinText.text = SaveLoadData.m_data.Coins.ToString();
         m_PlayBtn.onClick.AddListener(PlayBtn);
     }
@@ -24,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
     {
         StartCoroutine(LoadAsyncScene("LevelSelection"));
     }
-    
+
     IEnumerator LoadAsyncScene(string m_LoadScene)
     {
         yield return new WaitForSeconds(.5f);

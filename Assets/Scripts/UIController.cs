@@ -51,16 +51,18 @@ public class UIController : MonoBehaviourSingleton<UIController>
     [SerializeField] GameObject iconShop;
     
     [SerializeField] Button m_restartBTN;
-    [SerializeField] private Toggle m_SettingBtn;
+    [SerializeField] private Button m_SettingBtn;
     [SerializeField] private Slider m_PlayerSpeedSliderm, _PlayerAnimSpeedSlider;
     [SerializeField] private TextMeshProUGUI m_PlayerSpeedText, m_PlayerAnimSpeedText;
+
+    [SerializeField] GameObject m_PausePanel;
+    [SerializeField] Button m_Resume;
     private void Start()
     {
         m_restartBTN.onClick.AddListener(restartGame);
         //m_SettingBtn.onValueChanged.AddListener(settingBtn);
-        m_SettingBtn.onValueChanged.AddListener(delegate {
-            settingBtn(m_SettingBtn);
-        });
+        m_SettingBtn.onClick.AddListener(settingBtn);
+        
         //ChangeMap(PlayerprefSave.IdMap());
         ChangeTextCoin(PlayerprefSave.Coin);
         txtLevel.text = "LEVEL " + (PlayerprefSave.IdMap() + 1).ToString() + "/100";
@@ -80,7 +82,26 @@ public class UIController : MonoBehaviourSingleton<UIController>
 
     public void restartGame()
     {
+        Time.timeScale = 1;
+        AdHandler.HideRectBanner();
+
         SceneManager.LoadScene("LoadingLevel");
+    }
+    
+    public void Home()
+    {
+        Time.timeScale = 1;
+        AdHandler.HideRectBanner();
+
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    public void ResumeGame()
+    {
+        AdHandler.HideRectBanner();
+
+        m_PausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void PlayerSpeed(float speed)
@@ -93,9 +114,13 @@ public class UIController : MonoBehaviourSingleton<UIController>
         GameEvents.PlayerAnimSpeed.Raise(speed);
         m_PlayerAnimSpeedText.text = speed.ToString("F1");
     }
-    public void settingBtn(Toggle status)
+    public void settingBtn()
     {
-        GameManager.instance.ActiveTouchManager(!status.isOn);
+        AdHandler.ShowRectBanner();
+        Time.timeScale = 0;
+        m_PausePanel.SetActive(true);
+        
+        /*GameManager.instance.ActiveTouchManager(!status.isOn);
         //print(status);
         if (status.isOn)
         {
@@ -107,7 +132,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
         }
         
         m_PlayerSpeedSliderm.gameObject.SetActive(status.isOn);
-        _PlayerAnimSpeedSlider.gameObject.SetActive(status.isOn);
+        _PlayerAnimSpeedSlider.gameObject.SetActive(status.isOn);*/
     }
     public void DelayStart()
     {
@@ -201,6 +226,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
             }
         }*/
         
+        FirebaseEvents.logEvent("Level Complete " + (LevelSelection.m_LevelNum+1));
+
         PlayerprefSave.SetMap++;
     }
 
@@ -212,6 +239,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     void DelayLosingPanel()
     {
         LosePanel.SetActive(true);
+        AdHandler.ShowInterstitial();
     }
     
     [Header("Key open box reward")]
@@ -465,6 +493,8 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void btnNextmap()
     {
+        AdHandler.HideRectBanner();
+
         SceneManager.LoadScene("LevelSelection");
         /*if (PlayerprefSave.IdMap() < RandomMapController.Instance.listBlockLevels.Count - 1)
         {
@@ -490,18 +520,7 @@ public class UIController : MonoBehaviourSingleton<UIController>
     }
     public void BtnGetX5Coin()
     {
-        RecievedX5Coin();
-
-        /*if (IronSource.Agent.isRewardedVideoAvailable())
-        {
-            PlayerprefSave.SelectTypeVideo(TypeRewardVideo.x5);
-            IronSource.Agent.showRewardedVideo();
-        }
-        else
-        {
-            Debug.Log("video reward not available");
-            SoundManager.Instance.ShowNotification(canvasMain.transform);
-        }*/
+        AdHandler.ShowRewarded(RecievedX5Coin);
     }
     public void RecievedX5Coin()
     {

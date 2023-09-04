@@ -11,9 +11,10 @@ public class LevelSelection : MonoBehaviour
     public static int m_LevelNum;
     [SerializeField] private TextMeshProUGUI m_CoinText;
     [SerializeField] private List<Button> LevelBtns;
-
+    [SerializeField] private Button BackBtn;
     private void Start()
     {
+        BackBtn.onClick.AddListener(BacktoMainMenu);
         m_CoinText.text = SaveLoadData.m_data.Coins.ToString();
         
         for (int i = 0; i < LevelBtns.Count; i++)
@@ -30,6 +31,11 @@ public class LevelSelection : MonoBehaviour
                 LevelBtns[i].interactable = true;
             }
         }
+    }
+
+    void BacktoMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
     
     public void SetLevelNum(int num)

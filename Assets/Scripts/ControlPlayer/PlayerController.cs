@@ -625,6 +625,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     
     public void Lose()
     {
+        FirebaseEvents.logEvent("Level Fail " + (LevelSelection.m_LevelNum+1));
         rig.isKinematic = true;
         _isRun = false;
         _isLive = false;
@@ -632,12 +633,15 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
         lockMove = true;
 
         checkLonvong = false;
+        
         UIController.Instance.LosingPanel();
     }
 
     void DelaySlow()
     {
         SlowMotion.Instance.SlowNoAudio(2f, .3f);
+        AdHandler.ShowInterstitial();
+        AdHandler.ShowRectBanner();
         blackScreenCamera.SetActive(true);
     }
     public void NhayVuotRao()

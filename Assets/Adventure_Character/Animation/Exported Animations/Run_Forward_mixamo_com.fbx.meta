@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: 2649429347798979061
     second: Run_Forward_mixamo_com
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _modelSpecularColor
+    second: {fileID: 2100000, guid: abb1da1af759f8e4faf68228d3dedfb1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
