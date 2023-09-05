@@ -8,9 +8,27 @@ public class LoadingScripts : MonoBehaviour
 {
     [SerializeField] Image fillAmount;
     [SerializeField] private string m_LoadScene;
+
+    [SerializeField] private Button m_PrivacyPolicyBtn;
+    [SerializeField] private Button m_Agree;
+
+    [SerializeField] private GameObject GDPRPanel, LoadingPanel;
     void Start()
     {
+        if (!PlayerPrefs.HasKey("firstOpen"))
+        {
+            GDPRPanel.SetActive(true);
+        }
+        else
+        {
+            
+        }
         
+        
+    }
+
+    void Init()
+    {
         StartCoroutine(LoadYourAsyncScene());
         PlayerprefSave.FirstOpenGame();
         

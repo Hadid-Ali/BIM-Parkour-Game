@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f438cfcdb9714b438748f45e7ee0efd, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  m_Coins: 200
-  m_CurrentLevel: 1
+  m_Coins: 1000900
+  m_CurrentLevel: 31
+  m_CharactersUnlocked: 0
+  m_LastSelectedCharacter: 0
+  m_characterData:
+  - {fileID: 11400000, guid: 689971f736f10e943b9a625e7a644bb9, type: 2}
+  - {fileID: 11400000, guid: e0c94f6af18e3e94991b6dde52006982, type: 2}
+  m_characterDatabool: 0000

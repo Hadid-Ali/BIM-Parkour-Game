@@ -54,8 +54,14 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public float defaultspeed;
 
     public int HitCount = 0;
+
+    [Header("PlayeSkins")] [SerializeField]
+    private List<GameObject> Characters;
     private void Start()
     {
+        Characters[SaveLoadData.m_data.LastSelectedCharacter].SetActive(true);
+        anim = Characters[SaveLoadData.m_data.LastSelectedCharacter].GetComponent<Animator>();
+        
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         defaultspeed = speed;
         JumpAction();
@@ -620,7 +626,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
         /*});*/
         checkLonvong = false;
-        UIController.Instance.btnPowerUp.gameObject.SetActive(false);
+        rig.isKinematic = false;
+
     }
     
     public void Lose()

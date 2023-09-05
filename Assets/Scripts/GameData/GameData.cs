@@ -8,6 +8,11 @@ public class GameData : ScriptableObject
 {
     [SerializeField] private int m_Coins;
     [SerializeField] private int m_CurrentLevel;
+    [SerializeField] private int m_CharactersUnlocked;
+    [SerializeField] private int m_LastSelectedCharacter = 0;
+
+    [SerializeField] private List<CharacterData> m_characterData;
+    [SerializeField] private List<bool> m_characterDatabool = new();
 
     // [SerializeField] private VehicleName m_CurrentPlayerVehicleID;
     // [SerializeField] private List<PlayerVehicle> m_PlayerVehicles;
@@ -16,7 +21,7 @@ public class GameData : ScriptableObject
 
     public void ResetValue()
     {
-        m_Coins = 100;
+        m_Coins = 1000000;
         m_CurrentLevel = 30;
     }
 
@@ -30,6 +35,29 @@ public class GameData : ScriptableObject
     {
         get => m_Coins;
         set => m_Coins = value;
+    }
+    
+    public int CharacterUnlocked
+    {
+        get => m_CharactersUnlocked;
+        set => m_CharactersUnlocked = value;
+    }
+    public int LastSelectedCharacter
+    {
+        get => m_LastSelectedCharacter;
+        set => m_LastSelectedCharacter = value;
+    }
+
+    public List<CharacterData> CharacterData
+    {
+        get => m_characterData;
+        set => m_characterData = value;
+    }
+    
+    public List<bool> CharacterDataBool
+    {
+        get => m_characterDatabool;
+        set => m_characterDatabool = value;
     }
 
     // public bool IsTutorialPlayed

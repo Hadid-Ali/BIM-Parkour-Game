@@ -10,4 +10,5 @@ public class CharacterData : ScriptableObject
     public CharacterNames CharacterName;
     public GameObject CharacterPrefab;
     public int CharacterPrice;
+    public bool Locked;
 }

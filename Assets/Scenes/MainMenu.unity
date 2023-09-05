@@ -2216,9 +2216,9 @@ RectTransform:
   m_Father: {fileID: 75873099}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 927, y: 241}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 687, y: 241}
   m_SizeDelta: {x: 476, y: 316}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217099523
@@ -3036,7 +3036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1411519203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3563,7 +3563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1597039680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3640,10 +3640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bd5130f6f97f140848f4678af37319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left: {fileID: 1284547029}
-  Right: {fileID: 1046373792}
-  Buy: {fileID: 1871954186}
-  Select: {fileID: 1411519204}
+  m_Left: {fileID: 1284547029}
+  m_Right: {fileID: 1046373792}
+  m_Buy: {fileID: 1871954186}
+  m_Select: {fileID: 1411519204}
   BuyPrice: {fileID: 292740803}
   SelectBtnText: {fileID: 1461213265}
   m_CharactersName: 0000000001000000
@@ -4178,7 +4178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1871954185
 RectTransform:
   m_ObjectHideFlags: 0

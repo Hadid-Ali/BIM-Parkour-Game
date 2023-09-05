@@ -15,12 +15,11 @@ public static class PlayerprefSave
     }
     public static int CurrentCostume
     {
-        set { PlayerPrefs.SetInt("costumecurrent", value); }
-        get { return PlayerPrefs.GetInt("costumecurrent"); }
+        set { SaveLoadData.m_data.CharacterUnlocked = value;
+            SaveLoadData.SaveData(); }
+        get { return SaveLoadData.m_data.CharacterUnlocked; }
     }
-    /// <summary>
-    /// set và get id map
-    /// </summary>
+    
     public static int SetMap
     {
         set { SaveLoadData.m_data.Level = value;

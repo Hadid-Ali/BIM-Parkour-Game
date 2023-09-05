@@ -15,3 +15,4 @@ MonoBehaviour:
   CharacterName: 1
   CharacterPrefab: {fileID: 5639767187495323013, guid: 4f17f0f88e1df5c4686ed191ce4fa9ce, type: 3}
   CharacterPrice: 10000
+  Locked: 1
