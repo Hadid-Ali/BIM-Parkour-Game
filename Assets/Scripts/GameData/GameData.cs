@@ -28,6 +28,14 @@ public class GameData : ScriptableObject
     {
         m_Coins = 100;
         m_CurrentLevel = 1;
+        m_Music = 1;
+        m_Sound = 1;
+        NoAds = false;
+        UnlockAll = false;
+        for (int i = 1; i < m_characterDatabool.Count; i++)
+        {
+            m_characterDatabool[i] = true;
+        }
     }
 
     public bool NoAds
