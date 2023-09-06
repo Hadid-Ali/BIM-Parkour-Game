@@ -160,6 +160,8 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                 //    break;
                 case "coin":
                     //ManagerEffect.Instance.EffectTrigger(other.transform.GetChild(0).position);
+                    SoundHandler.Instence.playSound(SoundHandler.Instence.m_Coin);
+
                     GameManager.instance.EatCoin(100);
                     other.gameObject.SetActive(false);
                     break;
@@ -167,6 +169,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     playerController.JumpAction();
                     break;
                 case "jump":
+                    SoundHandler.Instence.playSound(SoundHandler.Instence.m_Collision);
                     playerController.Die();
                     break;
                 case "rotatecam":
@@ -179,6 +182,7 @@ public class PlayerTrigger : MonoBehaviourSingleton<PlayerTrigger>
                     playerController.m_LandRoll = true;
                     break;
                 case "slide":
+                    SoundHandler.Instence.playSound(SoundHandler.Instence.m_Slide);
                     if (!playerController._isSliding)
                     {
                         playerController.Die();

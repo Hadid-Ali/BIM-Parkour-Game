@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     private List<GameObject> Characters;
     private void Start()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameStart);
+
         Characters[SaveLoadData.m_data.LastSelectedCharacter].SetActive(true);
         anim = Characters[SaveLoadData.m_data.LastSelectedCharacter].GetComponent<Animator>();
         
@@ -443,6 +445,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     void StartClimbing()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_Climb);
+
         rig.velocity = Vector3.zero;
         //Debug.Log("leo tuong");
         _isRun = false;
@@ -599,6 +603,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void Win()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameWon);
         rig.isKinematic = true;
         _isRun = false;
         _isLive = false;
@@ -632,6 +637,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     
     public void Lose()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameLose);
+
         FirebaseEvents.logEvent("Level Fail " + (LevelSelection.m_LevelNum+1));
         rig.isKinematic = true;
         _isRun = false;
@@ -690,6 +697,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     bool batXa;
     public void JumpAction() // high Jump Function
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_Jump);
+
         if (checkAnimPlay("WallClimbingEnd0"))
         {
             return;

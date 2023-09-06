@@ -65,11 +65,13 @@ public class CharacterSelection : MonoBehaviour
 
     public void LeftBtnPress()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_StoreLeftRight);
         CurrentCharacter--;
         UpdateCharater(CurrentCharacter);
     }
     public void RightBtnPress()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_StoreLeftRight);
         CurrentCharacter++;
         UpdateCharater(CurrentCharacter);
     }
@@ -117,8 +119,10 @@ public class CharacterSelection : MonoBehaviour
 
     void BuyCharacter()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_BuyCharacter);
         if (SaveLoadData.m_data.Coins >= m_Characters1[CurrentCharacter].CharacterPrice )
         {
+            SaveLoadData.m_data.Coins -= m_Characters1[CurrentCharacter].CharacterPrice;
             m_Characters1[CurrentCharacter].Locked = false;
             SaveLoadData.SaveData();
             UpdateCharater(CurrentCharacter);
@@ -127,6 +131,7 @@ public class CharacterSelection : MonoBehaviour
 
     void SelectCharacter()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_SelectCharacter);
         SaveLoadData.m_data.LastSelectedCharacter = CurrentCharacter;
         SaveLoadData.SaveData();
         UpdateCharater(CurrentCharacter);

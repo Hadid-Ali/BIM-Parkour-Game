@@ -4,30 +4,43 @@ public static class AdHandler
 {
     public static void InitializeAds()
     {
-        GameEvents.InitAds.Raise();
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.InitAds.Raise();
     }
+
     public static void ShowBanner()
     {
-        GameEvents.ShowBannerAd.Raise();
-    } 
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.ShowBannerAd.Raise();
+    }
+
     public static void ShowRectBanner()
     {
-        GameEvents.ShowRectBannerAd.Raise();
-    } 
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.ShowRectBannerAd.Raise();
+    }
+
     public static void HideBanner()
     {
-        GameEvents.HideBannerAd.Raise();
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.HideBannerAd.Raise();
     }
+
     public static void HideRectBanner()
     {
-        GameEvents.HideRectBannerAd.Raise();
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.HideRectBannerAd.Raise();
     }
+
     public static void ShowInterstitial()
     {
-        GameEvents.ShowRInterstitialAd.Raise();
-    } 
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.ShowRInterstitialAd.Raise();
+    }
+
     public static void ShowRewarded(Action reward)
     {
-        GameEvents.ShowRewardedAd.Raise(reward);
-    } 
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.ShowRewardedAd.Raise(reward);
+    }
 }

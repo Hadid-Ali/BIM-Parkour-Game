@@ -174,9 +174,9 @@ public class AIController : MonoBehaviour
                         if (!suggest)
                         {
                             if (!isAction)
-                                RaycastCheckLeft();
+                             //   RaycastCheckLeft();
                             if (!isAction)
-                                RaycastCheckRight();
+                            //    RaycastCheckRight();
                             if (!isAction)
                                 CheckIsJump();
                         }
