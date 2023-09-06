@@ -22,6 +22,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        SoundHandler.Instence.m_BGAudioSource.Play();
         AdHandler.ShowBanner();
         m_CoinText.text = SaveLoadData.m_data.Coins.ToString();
         m_PlayBtn.onClick.AddListener(PlayBtn);

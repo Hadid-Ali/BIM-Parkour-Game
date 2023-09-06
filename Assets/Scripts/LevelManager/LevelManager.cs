@@ -33,8 +33,11 @@ public class LevelManager : MonoBehaviour
     }
 
     void SpawnLevel(int levelNumber)
-    {
-        var level = Instantiate(m_LevelDataScriptable.m_LevelPrefab[levelNumber], LevelParent);
+    { 
+        //var level = Instantiate(Resources.Load<GameObject>("Level/"+m_LevelDataScriptable.m_LevelPrefab[levelNumber].transform.name), LevelParent);
+        print("Level/"+m_LevelDataScriptable.m_LevelPrefab[levelNumber].transform.name);
+        var level = Resources.Load<GameObject>("Levels/"+m_LevelDataScriptable.m_LevelPrefab[levelNumber].transform.name);
+        level = Instantiate(level, LevelParent);
         level.SetActive(true);
     }
     

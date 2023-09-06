@@ -59,12 +59,11 @@ public class LoadingScripts : MonoBehaviour
 
     IEnumerator LoadYourAsyncScene()
     {
-        fillAmount.DOFillAmount(.4f, .4f);
-        yield return new WaitForSeconds(.4f);
-        fillAmount.DOFillAmount(.6f, .5f);
-        yield return new WaitForSeconds(.5f);
+        
+        fillAmount.DOFillAmount(.6f, .2f);
+        yield return new WaitForSeconds(.2f);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_LoadScene);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         fillAmount.fillAmount = .9f;
         while (!asyncLoad.isDone)
         {

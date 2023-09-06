@@ -16,7 +16,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.virtua.play.ice.hockey.goalkeeper.game" />
+    <setting name="bundleId" value="com.virtua.play.parkour.runner.jungle.race.game" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="True" />
