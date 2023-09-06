@@ -100,9 +100,8 @@ public static class PlayerprefSave
     {
         if (!PlayerPrefs.HasKey("firstOpen"))
         {
-            UnlockCostume(0);
             PlayerPrefs.SetInt("firstOpen", 1);
-            PlayerPrefs.SetInt("daydaily", 0);
+            //PlayerPrefs.SetInt("daydaily", 0);
         }
     }
     public static TypeRewardVideo TypeRewardVideo;

@@ -15,24 +15,39 @@ public class LoadingScripts : MonoBehaviour
     [SerializeField] private GameObject GDPRPanel, LoadingPanel;
     void Start()
     {
+        
+        m_PrivacyPolicyBtn.onClick.AddListener(PrivacyPolicy);
+        m_Agree.onClick.AddListener(Agree);
+        
         if (!PlayerPrefs.HasKey("firstOpen"))
         {
             GDPRPanel.SetActive(true);
         }
         else
         {
-            
+            Init();
         }
         
         
     }
 
+    void Agree()
+    {
+        PlayerprefSave.FirstOpenGame();
+        Init();
+    }
+
+    void PrivacyPolicy()
+    {
+        Application.OpenURL("https://play.virtua.com/privacy-policy");
+    }
     void Init()
     {
-        StartCoroutine(LoadYourAsyncScene());
-        PlayerprefSave.FirstOpenGame();
-        
+        GDPRPanel.SetActive(false);
+        LoadingPanel.SetActive(true);
+        GameEvents.InitFirebaseAnalytics.Raise();
         AdHandler.InitializeAds();
+        StartCoroutine(LoadYourAsyncScene());
     }
 
     IEnumerator LoadYourAsyncScene()

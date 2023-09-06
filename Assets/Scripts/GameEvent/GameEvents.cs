@@ -11,6 +11,7 @@ public partial class GameEvents
     public static GameEvent<bool> EnvMode = new();
 
     public static GameEvent InitAds = new();
+    public static GameEvent InitFirebaseAnalytics = new();
     public static GameEvent ShowBannerAd = new();
     public static GameEvent ShowRectBannerAd = new();
     public static GameEvent HideBannerAd = new();
