@@ -15,9 +15,12 @@ public class LoadingScripts : MonoBehaviour
     [SerializeField] private GameObject GDPRPanel, LoadingPanel;
     void Start()
     {
+        if (m_PrivacyPolicyBtn != null)
+        {
+            m_PrivacyPolicyBtn.onClick.AddListener(PrivacyPolicy);
+            m_Agree.onClick.AddListener(Agree);
+        }
         
-        m_PrivacyPolicyBtn.onClick.AddListener(PrivacyPolicy);
-        m_Agree.onClick.AddListener(Agree);
         
         if (!PlayerPrefs.HasKey("firstOpen"))
         {
@@ -43,8 +46,12 @@ public class LoadingScripts : MonoBehaviour
     }
     void Init()
     {
-        GDPRPanel.SetActive(false);
-        LoadingPanel.SetActive(true);
+        if (GDPRPanel != null)
+        {
+            GDPRPanel.SetActive(false);
+            LoadingPanel.SetActive(true);
+        }
+        
         GameEvents.InitFirebaseAnalytics.Raise();
         AdHandler.InitializeAds();
         StartCoroutine(LoadYourAsyncScene());
