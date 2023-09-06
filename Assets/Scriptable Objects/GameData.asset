@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   m_Coins: 100
-  m_CurrentLevel: 0
+  m_CurrentLevel: 1
   m_CharactersUnlocked: 0
   m_LastSelectedCharacter: 0
   m_characterData:
