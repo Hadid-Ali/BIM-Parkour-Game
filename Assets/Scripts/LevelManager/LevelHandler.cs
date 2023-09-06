@@ -11,9 +11,4 @@ public class LevelHandler : MonoBehaviour
     {
         GameEvents.EnvMode.Raise(m_IsNightMode);
     }
-
-    private void Start()
-    {
-        
-    }
 }

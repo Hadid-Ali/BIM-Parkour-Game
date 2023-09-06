@@ -8,6 +8,10 @@ using UnityEngine.Rendering.Universal;
 public class DayNightHandler : MonoBehaviour
 {
     [SerializeField] private Volume m_Volume;
+
+    [SerializeField] private VolumeProfile m_DayProfile;
+    [SerializeField] private VolumeProfile m_NightProfile;
+    
     [SerializeField] private Material m_Material;
     [SerializeField] private Color m_DayColor, m_NightColor;
     [SerializeField] private SpriteRenderer m_Bg;
@@ -37,17 +41,19 @@ public class DayNightHandler : MonoBehaviour
 
     public void Day()
     {
-        m_Volume.enabled = false;
         m_Material.color = m_DayColor;
         m_Bg.sprite = m_BgImgDay;
         RenderSettings.fog = false;
+
+        m_Volume.profile = m_DayProfile;
     }
 
     public void Night()
     {
-        m_Volume.enabled = true;
         m_Material.color = m_NightColor;
         m_Bg.sprite = m_BgImgNight;
         RenderSettings.fog = true;
+        
+        m_Volume.profile = m_NightProfile;
     } 
 }
