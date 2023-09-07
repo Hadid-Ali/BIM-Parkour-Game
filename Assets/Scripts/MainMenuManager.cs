@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +20,18 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject StorePanel;
     [SerializeField] private GameObject SettingPanel;
     [SerializeField] private GameObject MenuPanel;
-    
+
+    private void OnEnable()
+    {
+        GameEvents.NoAds.Register(NoADs);
+        GameEvents.UnlockAll.Register(UnlockAll);
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.NoAds.Unregister(NoADs);
+        GameEvents.UnlockAll.Unregister(UnlockAll);
+    }
 
     void Start()
     {
@@ -28,8 +41,6 @@ public class MainMenuManager : MonoBehaviour
         m_PlayBtn.onClick.AddListener(PlayBtn);
         m_Store.onClick.AddListener(Store);
         m_Setting.onClick.AddListener(Setting);
-        m_NoADs.onClick.AddListener(NoADs);
-        m_UnlockAll.onClick.AddListener(UnlockAll);
 
         if (SaveLoadData.m_data.NoAds)
         {
@@ -66,6 +77,7 @@ public class MainMenuManager : MonoBehaviour
         m_NoADs.gameObject.SetActive(false);
         AdHandler.HideBanner();
         SaveLoadData.m_data.NoAds = true;
+        m_UnlockAll.transform.position = m_NoADs.transform.position;
         SaveLoadData.SaveData();
     }
     
@@ -77,9 +89,9 @@ public class MainMenuManager : MonoBehaviour
         SaveLoadData.m_data.Level = 30;
         for (int i = 0; i < SaveLoadData.m_data.CharacterData.Count; i++)
         {
-            print(SaveLoadData.m_data.CharacterDataBool[i].ToString());
+            //print(SaveLoadData.m_data.CharacterDataBool[i].ToString());
             SaveLoadData.m_data.CharacterData[i].Locked = false;
-            print(SaveLoadData.m_data.CharacterDataBool[i].ToString());
+            //print(SaveLoadData.m_data.CharacterDataBool[i].ToString());
         }
         SaveLoadData.SaveData();
     }

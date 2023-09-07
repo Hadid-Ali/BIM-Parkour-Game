@@ -28,6 +28,7 @@ public class GameData : ScriptableObject
     {
         m_Coins = 100;
         m_CurrentLevel = 1;
+        LastSelectedCharacter = 0;
         m_Music = 1;
         m_Sound = 1;
         NoAds = false;
@@ -35,6 +36,7 @@ public class GameData : ScriptableObject
         for (int i = 1; i < m_characterDatabool.Count; i++)
         {
             m_characterDatabool[i] = true;
+            m_characterData[i].Locked = true;
         }
     }
 

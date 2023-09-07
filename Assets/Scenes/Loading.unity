@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &34167526
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712796348707772022, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_Name
+      value: Ad Manager test
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712796348707772022, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
 --- !u!1 &139339407
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +591,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2103565665, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: AdId
+      value: ca-app-pub-4899050676715044/9659115248
+      objectReference: {fileID: 0}
+    - target: {fileID: 339937976512405673, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: AdId
+      value: ca-app-pub-4899050676715044/5719016600
+      objectReference: {fileID: 0}
+    - target: {fileID: 372539066060343401, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: AdId
+      value: ca-app-pub-4899050676715044/4649477511
+      objectReference: {fileID: 0}
     - target: {fileID: 6622103797305806266, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -577,6 +650,14 @@ PrefabInstance:
     - target: {fileID: 6712796348707772022, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
       propertyPath: m_Name
       value: Ad Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712796348707772022, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732420641086342840, guid: 2551046ec050cb84889e82c4057d3090, type: 3}
+      propertyPath: AdId
+      value: ca-app-pub-4899050676715044/9361095756
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2551046ec050cb84889e82c4057d3090, type: 3}

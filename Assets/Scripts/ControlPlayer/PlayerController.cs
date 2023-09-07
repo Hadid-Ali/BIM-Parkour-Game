@@ -539,7 +539,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     }
     public void Slide()
     {
-        if (checkAnimPlay("WallClimbingEnd0"))
+        if (checkAnimPlay("WallClimbingEnd0")  || checkAnimPlay("WallClimbing") || checkAnimPlay("JumpRoll") || checkAnimPlay("JumpRoll3") || checkAnimPlay("JumpRoll2") || checkAnimPlay("Slide"))
         {
             return;
         }
@@ -699,7 +699,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     {
         SoundHandler.Instence.playSound(SoundHandler.Instence.m_Jump);
 
-        if (checkAnimPlay("WallClimbingEnd0"))
+        if (checkAnimPlay("WallClimbingEnd0") || checkAnimPlay("WallClimbing"))
         {
             return;
         }

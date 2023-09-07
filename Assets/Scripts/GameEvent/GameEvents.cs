@@ -18,4 +18,8 @@ public partial class GameEvents
     public static GameEvent HideRectBannerAd = new();
     public static GameEvent ShowRInterstitialAd = new();
     public static GameEvent<Action> ShowRewardedAd = new();
+    
+    public static GameEvent NoAds = new();
+    public static GameEvent UnlockAll = new();
+
 }

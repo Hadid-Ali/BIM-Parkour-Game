@@ -41,7 +41,7 @@ public class Banner : MonoBehaviour
     adRequest.Keywords.Add("unity-Banner");
 
     // send the request to load the ad.
-    Debug.Log("Loading banner ad.");
+    //Debug.Log("Loading banner ad.");
     _bannerView.LoadAd(adRequest);
   }
 
