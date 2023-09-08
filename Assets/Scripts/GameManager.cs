@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public GameObject touchManager;
     private void Start()
     {
-        Application.targetFrameRate = 60;
         Time.timeScale = 1;
         instance = this;
     }

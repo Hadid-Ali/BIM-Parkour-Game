@@ -30,8 +30,8 @@ public class LoadingScripts : MonoBehaviour
         {
             Init();
         }
-        
-        
+
+        Application.targetFrameRate = -1;
     }
 
     void Agree()
