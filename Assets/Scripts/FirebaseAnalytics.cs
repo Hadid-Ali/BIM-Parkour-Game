@@ -9,7 +9,17 @@ public class FirebaseAnalytics : MonoBehaviour
     //public UnityEvent OnInitialized = new UnityEvent();
     private InitializationFailedEvent OnInitializationFailed = new InitializationFailedEvent();
 
+    private void OnEnable()
+    {
+        GameEvents.InitFirebaseAnalytics.Register(InitFB);
+    }
+
     void Start()
+    {
+        GameEvents.InitFirebaseAnalytics.Unregister(InitFB);
+    }
+
+    void InitFB()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {

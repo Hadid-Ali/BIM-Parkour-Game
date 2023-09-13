@@ -35,11 +35,13 @@ public class LevelSelection : MonoBehaviour
 
     void BacktoMainMenu()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_Back);
         SceneManager.LoadScene("MainMenu");
     }
     
     public void SetLevelNum(int num)
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_LevelSelection);
         m_LevelNum = num;
         StartCoroutine(LoadAsyncScene("LoadingLevel"));
     }

@@ -12,11 +12,30 @@ public class SaveLoadData : MonoBehaviour
         
         LoadData();
         m_data = m_GameData;
+        GetCharacterdata();
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    static void SetCharacterdata()
+    {
+        for (int i = 0; i < m_data.CharacterData.Count; i++)
+        {
+            m_data.CharacterDataBool[i] = m_data.CharacterData[i].Locked;
+        }
+    }
+
+    void GetCharacterdata()
+    {
+        if (PlayerPrefs.HasKey("Save"))
+            for (int i = 0; i < m_data.CharacterData.Count; i++)
+            {
+                m_data.CharacterData[i].Locked = m_data.CharacterDataBool[i];
+            }
     }
 
     public static void SaveData()
     {
+        SetCharacterdata();
         string Save = JsonUtility.ToJson(m_data);
         PlayerPrefs.SetString("Save", Save);
         PlayerPrefs.Save();
@@ -28,6 +47,7 @@ public class SaveLoadData : MonoBehaviour
         {
             string Load = PlayerPrefs.GetString("Save");
             JsonUtility.FromJsonOverwrite(Load, m_GameData);
+            
         }
         else
         {

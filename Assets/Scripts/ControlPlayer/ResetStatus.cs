@@ -18,7 +18,7 @@ public class ResetStatus : MonoBehaviour
         //TestCamera.Instance.lookAt = TestCamera.Instance.player;
         PlayerController.Instance.lockMove = false;
     }
-    void EndAction()
+    public void EndAction()
     {
         PlayerController.Instance._isSliding = false;
         PlayerController.Instance.isAction = false;
@@ -29,11 +29,11 @@ public class ResetStatus : MonoBehaviour
     {
         anim.SetInteger(AnimParameter.vuotrao, 0);
     }
-    void ResetWallClimb()
+    public void ResetWallClimb()
     {
         anim.SetInteger(AnimParameter.wallclimb, 0);
     }
-    void ResetJump()
+    public void ResetJump()
     {
         // anim.SetInteger(AnimParameter.jump, 0);
         
@@ -41,7 +41,7 @@ public class ResetStatus : MonoBehaviour
 
     }
 
-    void StartRun()
+    public void StartRun()
     {
         PlayerController.Instance.rig.isKinematic = false;
     }    
@@ -53,7 +53,7 @@ public class ResetStatus : MonoBehaviour
         }
         
     }
-    void ResetLeoTuong()
+    public void ResetLeoTuong()
     {
         transform.parent.GetComponent<Rigidbody>().isKinematic = false;
         PlayerController.Instance.isAction = false;
@@ -63,22 +63,22 @@ public class ResetStatus : MonoBehaviour
         PlayerController.Instance.lockMove = false;
         //Debug.Log("hanh dong");
     }
-    void ClimbDie()
+    public void ClimbDie()
     {
         PlayerController.Instance.Die();
     }
 
-    void Roll()
+    public void Roll()
     {
         PlayerController.Instance.m_LandRoll = true;
     }
 
-    void EndSlide()
+    public void EndSlide()
     {
         PlayerController.Instance._isSliding = false;
     }
 
-    void reset()
+    public void reset()
     {
         PlayerController.Instance.rig.isKinematic = false;
     }

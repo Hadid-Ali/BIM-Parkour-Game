@@ -54,8 +54,16 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     public float defaultspeed;
 
     public int HitCount = 0;
+
+    [Header("PlayeSkins")] [SerializeField]
+    private List<GameObject> Characters;
     private void Start()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameStart);
+
+        Characters[SaveLoadData.m_data.LastSelectedCharacter].SetActive(true);
+        anim = Characters[SaveLoadData.m_data.LastSelectedCharacter].GetComponent<Animator>();
+        
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         defaultspeed = speed;
         JumpAction();
@@ -437,6 +445,8 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     void StartClimbing()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_Climb);
+
         rig.velocity = Vector3.zero;
         //Debug.Log("leo tuong");
         _isRun = false;
@@ -529,7 +539,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     }
     public void Slide()
     {
-        if (checkAnimPlay("WallClimbingEnd0"))
+        if (checkAnimPlay("WallClimbingEnd0")  || checkAnimPlay("WallClimbing") || checkAnimPlay("JumpRoll") || checkAnimPlay("JumpRoll3") || checkAnimPlay("JumpRoll2") || checkAnimPlay("Slide"))
         {
             return;
         }
@@ -593,6 +603,7 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
     public void Win()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameWon);
         rig.isKinematic = true;
         _isRun = false;
         _isLive = false;
@@ -620,11 +631,14 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
 
         /*});*/
         checkLonvong = false;
-        UIController.Instance.btnPowerUp.gameObject.SetActive(false);
+        rig.isKinematic = false;
+
     }
     
     public void Lose()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_GameLose);
+
         FirebaseEvents.logEvent("Level Fail " + (LevelSelection.m_LevelNum+1));
         rig.isKinematic = true;
         _isRun = false;
@@ -683,7 +697,9 @@ public class PlayerController : MonoBehaviourSingleton<PlayerController>
     bool batXa;
     public void JumpAction() // high Jump Function
     {
-        if (checkAnimPlay("WallClimbingEnd0"))
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_Jump);
+
+        if (checkAnimPlay("WallClimbingEnd0") || checkAnimPlay("WallClimbing"))
         {
             return;
         }

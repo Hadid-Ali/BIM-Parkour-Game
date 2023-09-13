@@ -8,10 +8,10 @@ using TMPro;
 public class CharacterSelection : MonoBehaviour
 {
     [Header("UI Buttons")] 
-    [SerializeField] private Button Left;
-    [SerializeField] private Button Right;
-    [SerializeField] private Button Buy;
-    [SerializeField] private Button Select;
+    [SerializeField] private Button m_Left;
+    [SerializeField] private Button m_Right;
+    [SerializeField] private Button m_Buy;
+    [SerializeField] private Button m_Select;
 
     [Header("UI Text")] 
     [SerializeField] private TextMeshProUGUI BuyPrice;
@@ -24,24 +24,26 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private List<CharacterNames> m_CharactersName;
     private int CurrentCharacter = 0;
 
-    public static string m_SelectedCharacter;
-
+    public static bool firsttime = false;
+    
     private void OnEnable()
     {
-        GameEvents.SelectedCharacter.Register(SelectedCharacter);
+        if (firsttime)
+        {
+            CurrentCharacter = SaveLoadData.m_data.LastSelectedCharacter;
+            UpdateCharater(SaveLoadData.m_data.LastSelectedCharacter);
+        }
+        
     }
-
-    private void OnDisable()
-    {
-        GameEvents.SelectedCharacter.Unregister(SelectedCharacter);
-    }
-
+    
     private void Start()
     {
-        Left.onClick.AddListener(LeftBtnPress);
-        Right.onClick.AddListener(RightBtnPress);
-        // Buy.onClick.AddListener();
-        // SelectBtnText.onClick.AddListener();
+        firsttime = true;
+        CurrentCharacter = SaveLoadData.m_data.LastSelectedCharacter;
+        m_Left.onClick.AddListener(LeftBtnPress);
+        m_Right.onClick.AddListener(RightBtnPress);
+        m_Buy.onClick.AddListener(BuyCharacter);
+        m_Select.onClick.AddListener(SelectCharacter);
         GetCharacterData();
     }
 
@@ -53,7 +55,7 @@ public class CharacterSelection : MonoBehaviour
             SpawnCharacter(i);
         }
         
-        m_Characters[CurrentCharacter].SetActive(true);
+        UpdateCharater(SaveLoadData.m_data.LastSelectedCharacter);
     }
 
     void SpawnCharacter(int i)
@@ -63,11 +65,13 @@ public class CharacterSelection : MonoBehaviour
 
     public void LeftBtnPress()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_StoreLeftRight);
         CurrentCharacter--;
         UpdateCharater(CurrentCharacter);
     }
     public void RightBtnPress()
     {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_StoreLeftRight);
         CurrentCharacter++;
         UpdateCharater(CurrentCharacter);
     }
@@ -89,11 +93,49 @@ public class CharacterSelection : MonoBehaviour
         }
         
         m_Characters[CurrentCharacter].SetActive(true);
+
+        if (m_Characters1[CurrentCharacter].Locked)
+        {
+            m_Buy.gameObject.SetActive(true);
+            m_Select.gameObject.SetActive(false);
+            BuyPrice.text = m_Characters1[CurrentCharacter].CharacterPrice.ToString();
+        }
+        else
+        {
+            m_Buy.gameObject.SetActive(false);
+            m_Select.gameObject.SetActive(true);
+            if (SaveLoadData.m_data.LastSelectedCharacter == CurrentCharacter)
+            {
+                SelectBtnText.text = "SELECTED";
+                m_Select.interactable = false;
+            }
+            else
+            {
+                m_Select.interactable = true;
+                SelectBtnText.text = "SELECT";
+            }
+        }
     }
 
-    private void SelectedCharacter()
+    void BuyCharacter()
     {
-        m_SelectedCharacter = m_CharactersName[CurrentCharacter].ToString();
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_BuyCharacter);
+        if (SaveLoadData.m_data.Coins >= m_Characters1[CurrentCharacter].CharacterPrice )
+        {
+            SaveLoadData.m_data.Coins -= m_Characters1[CurrentCharacter].CharacterPrice;
+            m_Characters1[CurrentCharacter].Locked = false;
+            SaveLoadData.SaveData();
+            UpdateCharater(CurrentCharacter);
+        }
     }
+
+    void SelectCharacter()
+    {
+        SoundHandler.Instence.playSound(SoundHandler.Instence.m_SelectCharacter);
+        SaveLoadData.m_data.LastSelectedCharacter = CurrentCharacter;
+        SaveLoadData.SaveData();
+        UpdateCharater(CurrentCharacter);
+    }
+    
 
 }

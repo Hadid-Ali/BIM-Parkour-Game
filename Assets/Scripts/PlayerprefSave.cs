@@ -15,12 +15,11 @@ public static class PlayerprefSave
     }
     public static int CurrentCostume
     {
-        set { PlayerPrefs.SetInt("costumecurrent", value); }
-        get { return PlayerPrefs.GetInt("costumecurrent"); }
+        set { SaveLoadData.m_data.CharacterUnlocked = value;
+            SaveLoadData.SaveData(); }
+        get { return SaveLoadData.m_data.CharacterUnlocked; }
     }
-    /// <summary>
-    /// set và get id map
-    /// </summary>
+    
     public static int SetMap
     {
         set { SaveLoadData.m_data.Level = value;
@@ -101,9 +100,8 @@ public static class PlayerprefSave
     {
         if (!PlayerPrefs.HasKey("firstOpen"))
         {
-            UnlockCostume(0);
             PlayerPrefs.SetInt("firstOpen", 1);
-            PlayerPrefs.SetInt("daydaily", 0);
+            //PlayerPrefs.SetInt("daydaily", 0);
         }
     }
     public static TypeRewardVideo TypeRewardVideo;
