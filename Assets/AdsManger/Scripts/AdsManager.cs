@@ -12,6 +12,7 @@ public class AdsManager : MonoBehaviour
     [SerializeField] private Interstitial m_InterstitialAd;
     [SerializeField] private Rewarded m_RewardedAd;
     [SerializeField] private RectBanner m_RectBannerAd;
+    [SerializeField] private OpenApp m_AppOpenAd;
 
     [SerializeField] private BannerType m_BannerType;
     [SerializeField] private BannerPosition m_BannerPosition;
@@ -30,6 +31,7 @@ public class AdsManager : MonoBehaviour
         GameEvents.HideRectBannerAd.Register(HideRectBannerAD);
         GameEvents.ShowRInterstitialAd.Register(ShowInterstitialAD);
         GameEvents.ShowRewardedAd.Register(ShowRewarderVideo);
+        GameEvents.ShowAppOpenAd.Register(showAppOpen);
     }
     private void OnDisable()
     {
@@ -40,6 +42,7 @@ public class AdsManager : MonoBehaviour
         GameEvents.ShowRectBannerAd.Register(ShowRectBannerAD);
         GameEvents.ShowRInterstitialAd.Unregister(ShowInterstitialAD);
         GameEvents.ShowRewardedAd.UnRegister(ShowRewarderVideo);
+        GameEvents.ShowAppOpenAd.Unregister(showAppOpen);
     }
 
     private void Start()
@@ -110,6 +113,7 @@ public class AdsManager : MonoBehaviour
         {
             m_InterstitialAd.LoadInterstitialAd();
             m_RewardedAd.LoadRewardedAd();
+            m_AppOpenAd.LoadAD();
             
             Debug.Log("Ad Initialized");
         });
@@ -145,6 +149,11 @@ public class AdsManager : MonoBehaviour
     void ShowRewarderVideo(Action Reward)
     {
         m_RewardedAd.ShowRewardedAd(Reward);
+    }
+
+    void showAppOpen()
+    {
+        m_AppOpenAd.ShowAppOpenAd();
     }
     
 }

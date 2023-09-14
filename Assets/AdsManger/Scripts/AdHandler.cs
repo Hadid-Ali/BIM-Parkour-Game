@@ -43,4 +43,9 @@ public static class AdHandler
         if (!SaveLoadData.m_data.NoAds)
             GameEvents.ShowRewardedAd.Raise(reward);
     }
+    public static void ShowAppOpen()
+    {
+        if (!SaveLoadData.m_data.NoAds)
+            GameEvents.ShowAppOpenAd.Raise();
+    }
 }

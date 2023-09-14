@@ -61,7 +61,8 @@ public class LoadingScripts : MonoBehaviour
     {
         
         fillAmount.DOFillAmount(.6f, .2f);
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.3f);
+        AdHandler.ShowAppOpen();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(m_LoadScene);
         yield return new WaitForSeconds(.2f);
         fillAmount.fillAmount = .9f;
